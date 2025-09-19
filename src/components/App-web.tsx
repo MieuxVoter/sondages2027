@@ -21,8 +21,8 @@ export function AppWeb() {
             alt="Logo"
             sx={{ height: 72, width: 72, mr: 2 }}
           />
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Mon App
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, ml: 2 }}>
+            JM Tracker - 2027
           </Typography>
           <Button color="inherit" component={Link} to="/">
             Home
