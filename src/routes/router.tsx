@@ -6,25 +6,45 @@ import {
   createRootRoute,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
+  Container,
+  Card,
+  CardContent
+} from '@mui/material'
 
 const rootRoute = createRootRoute({
   component: () => (
-    <>
-      <div className="p-2 flex gap-2">
-        <Link to="/" className="[&.active]:font-bold">
-          Home
-        </Link>{' '}
-        <Link to="/about" className="[&.active]:font-bold">
-          About
-        </Link>{' '}
-        <Link to="/info" className="[&.active]:font-bold">
-          Info
-        </Link>
-      </div>
-      <hr />
-      <Outlet />
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Mon App
+          </Typography>
+          <Button color="inherit" component={Link} to="/">
+            Home
+          </Button>
+          <Button color="inherit" component={Link} to="/about">
+            About
+          </Button>
+          <Button color="inherit" component={Link} to="/info">
+            Info
+          </Button>
+        </Toolbar>
+      </AppBar>
+
+      <Box sx={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
+        <Container maxWidth="lg" sx={{ py: 3, flex: 1 }}>
+          <Outlet />
+        </Container>
+      </Box>
+
       <TanStackRouterDevtools />
-    </>
+    </Box>
   ),
 })
 
@@ -33,9 +53,16 @@ const indexRoute = createRoute({
   path: '/',
   component: function Index() {
     return (
-      <div className="p-2">
-        <h3>Welcome Home!</h3>
-      </div>
+      <Card>
+        <CardContent>
+          <Typography variant="h4" gutterBottom>
+            Welcome Home!
+          </Typography>
+          <Typography variant="body1">
+            This is your MUI full-page application homepage.
+          </Typography>
+        </CardContent>
+      </Card>
     )
   },
 })
@@ -44,7 +71,18 @@ const aboutRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/about',
   component: function About() {
-    return <div className="p-2">Hello from About!</div>
+    return (
+      <Card>
+        <CardContent>
+          <Typography variant="h4" gutterBottom>
+            About
+          </Typography>
+          <Typography variant="body1">
+            Hello from the About page! This is built with Material-UI.
+          </Typography>
+        </CardContent>
+      </Card>
+    )
   },
 })
 
@@ -53,16 +91,24 @@ const infoRoute = createRoute({
   path: '/info',
   component: function Info() {
     return (
-      <div className="p-2">
-        <h3>Info Page</h3>
-        <div className="flex gap-2 mt-2">
-          <Link to="/info/details" className="[&.active]:font-bold text-blue-500">
-            Details
-          </Link>
-        </div>
-        <hr className="my-2" />
+      <Box>
+        <Card sx={{ mb: 2 }}>
+          <CardContent>
+            <Typography variant="h4" gutterBottom>
+              Info Page
+            </Typography>
+            <Button
+              variant="contained"
+              component={Link}
+              to="/info/details"
+              sx={{ mt: 1 }}
+            >
+              View Details
+            </Button>
+          </CardContent>
+        </Card>
         <Outlet />
-      </div>
+      </Box>
     )
   },
 })
@@ -71,7 +117,18 @@ const infoDetailsRoute = createRoute({
   getParentRoute: () => infoRoute,
   path: '/details',
   component: function InfoDetails() {
-    return <div className="p-2 bg-gray-100">This is the details section inside Info!</div>
+    return (
+      <Card>
+        <CardContent sx={{ bgcolor: 'grey.100' }}>
+          <Typography variant="h5" gutterBottom>
+            Details Section
+          </Typography>
+          <Typography variant="body1">
+            This is the details section inside Info page!
+          </Typography>
+        </CardContent>
+      </Card>
+    )
   },
 })
 
