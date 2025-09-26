@@ -7,7 +7,7 @@ import ScrutinUninominal from "../../assets/scrutin-uninominal.svg?react";
 
 export const AppCommand : FC = () => {
     return (
-        <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, bgcolor: 'primary.main' }} elevation={3}>
+        <Paper sx={{ bgcolor: 'primary.main' }} elevation={3}>
         <BottomNavigation showLabels sx={{ bgcolor: 'transparent', '& .MuiBottomNavigationAction-root': { color: 'white' }, '& .Mui-selected': { color: 'white !important' } }}>
           <BottomNavigationAction
             label="Scrutin Uninominal"
