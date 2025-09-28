@@ -16,7 +16,7 @@ export const WebBanner : FC = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: 'white', color: 'black' }}>
+    <AppBar position="static" sx={{ bgcolor: 'white', color: 'primary.main' }}>
       <Toolbar variant="dense">
        <Box
           component="img"
@@ -25,7 +25,7 @@ export const WebBanner : FC = () => {
           sx={{ height: 50, width: 60, mr: 2 }}
         />
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, ml: 2 }}>
-          JM Tracker - 2027
+          Suivie des Candidats aux Elections - 2027
         </Typography>
         <Button color="inherit">About</Button>
         <Button color="inherit">Contact</Button>
@@ -35,7 +35,7 @@ export const WebBanner : FC = () => {
         sx={{ bgcolor: 'white', borderColor: 'divider' }}
       >
         <Tab
-          label="Scrutin Uninominal"
+          label="Jugement Majoritaire"
           component={Link}
           to="/"
           sx={{ textTransform: 'none' }}
@@ -47,7 +47,7 @@ export const WebBanner : FC = () => {
           sx={{ textTransform: 'none' }}
         />
         <Tab
-          label="Jugement Majoritaire"
+          label="Scrutin Uninominal"
           component={Link}
           to="/info"
           sx={{ textTransform: 'none' }}
