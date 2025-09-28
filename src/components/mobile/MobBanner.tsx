@@ -7,7 +7,7 @@ import {
 } from '@mui/material'
 import logoMiniSvg from '../../assets/logo-mini.svg'
 
-export const AppBanner : FC = () => {
+export const MobBanner : FC = () => {
     return (
        <AppBar position="static" sx={{ zIndex: 1 }}>
         <Toolbar>
