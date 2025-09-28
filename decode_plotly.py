@@ -3,7 +3,7 @@ import base64
 import struct
 
 # Lire le fichier JSON
-with open('/Users/borisvilboux/free/jm-tracker-react/src/assets/data/exemple.json', 'r') as f:
+with open('/Users/borisvilboux/free/jm-tracker-react/src/data/exemple.json', 'r') as f:
     plotly_data = json.load(f)
 
 # Fonction pour décoder les données base64
@@ -105,7 +105,7 @@ for series in series_data:
     echarts_config['series'].append(echarts_series)
 
 # Sauvegarder la configuration ECharts
-with open('/Users/borisvilboux/free/jm-tracker-react/src/assets/data/echarts_config.json', 'w', encoding='utf-8') as f:
+with open('/Users/borisvilboux/free/jm-tracker-react/src/data/echarts_config.json', 'w', encoding='utf-8') as f:
     json.dump(echarts_config, f, ensure_ascii=False, indent=2)
 
 print("\nConfiguration ECharts créée et sauvegardée dans echarts_config.json")
