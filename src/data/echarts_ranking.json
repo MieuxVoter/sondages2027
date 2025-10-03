@@ -1,6 +1,7 @@
 {
   "title": {
     "text": "Classement des candidats à l'élection présidentielle 2027",
+    "subtext": "source: IPSOS, commanditaire: La Tribune Dimanche",
     "left": "center",
     "textStyle": {
       "fontWeight": "bold"
@@ -19,8 +20,7 @@
       "très insatisfait"
     ],
     "bottom": 0,
-    "orient": "horizontal",
-    "selectedMode": "multiple"
+    "orient": "horizontal"
   },
   "grid": {
     "left": "3%",
@@ -31,16 +31,27 @@
   },
   "xAxis": {
     "type": "time",
-    "boundaryGap": false
+    "boundaryGap": false,
+    "axisLabel": {
+      "formatter": "{MM}/{yyyy}"
+    }
   },
   "yAxis": {
     "type": "value",
     "inverse": true,
     "min": 0,
     "max": 27,
-    "name": "Position dans le classement",
-    "nameLocation": "middle",
-    "nameGap": 50
+    "interval": 1,
+    "axisLabel": {
+      "show": false
+    },
+    "splitLine": {
+      "show": true,
+      "lineStyle": {
+        "color": "#e0e0e0",
+        "type": "dashed"
+      }
+    }
   },
   "series": [
     {
@@ -49,26 +60,62 @@
       "data": [
         [
           "2024-09-13",
-          16.42
+          0.5800000000000001
         ],
         [
           "2024-10-10",
-          11.42
+          0.5800000000000001
         ],
         [
           "2024-11-07",
-          13.42
+          0.5800000000000001
         ],
         [
           "2025-01-09",
-          16.42
+          0.5800000000000001
         ],
         [
           "2025-02-13",
-          16.42
+          0.5800000000000001
         ],
         [
           "2025-03-14",
+          0.5800000000000001
+        ],
+        [
+          "2025-04-10",
+          0.5800000000000001
+        ],
+        [
+          "2025-05-16",
+          0.5800000000000001
+        ],
+        [
+          "2025-06-13",
+          0.5800000000000001
+        ],
+        [
+          "2025-07-10",
+          0.5800000000000001
+        ],
+        [
+          "2025-09-12",
+          0.5800000000000001
+        ],
+        [
+          "2025-09-12",
+          11.42
+        ],
+        [
+          "2025-07-10",
+          7.42
+        ],
+        [
+          "2025-06-13",
+          12.42
+        ],
+        [
+          "2025-05-16",
           17.42
         ],
         [
@@ -76,32 +123,40 @@
           16.42
         ],
         [
-          "2025-05-16",
+          "2025-03-14",
           17.42
         ],
         [
-          "2025-06-13",
-          12.42
+          "2025-02-13",
+          16.42
         ],
         [
-          "2025-07-10",
-          7.42
+          "2025-01-09",
+          16.42
         ],
         [
-          "2025-09-12",
+          "2024-11-07",
+          13.42
+        ],
+        [
+          "2024-10-10",
           11.42
+        ],
+        [
+          "2024-09-13",
+          16.42
         ]
       ],
       "areaStyle": {
-        "opacity": 0.4,
-        "color": "rgba(194,177,19,0.4)"
+        "color": "rgba(194,177,19,0.5)"
       },
       "lineStyle": {
-        "width": 1,
-        "color": "rgba(194,177,19,0.8)"
+        "width": 0,
+        "color": "transparent"
       },
-      "stack": "zones",
-      "smooth": false
+      "symbol": "none",
+      "smooth": false,
+      "stack": "background"
     },
     {
       "name": "plutôt insatisfait",
@@ -150,18 +205,62 @@
         [
           "2025-09-12",
           11.58
+        ],
+        [
+          "2025-09-12",
+          24.42
+        ],
+        [
+          "2025-07-10",
+          23.42
+        ],
+        [
+          "2025-06-13",
+          23.42
+        ],
+        [
+          "2025-05-16",
+          23.42
+        ],
+        [
+          "2025-04-10",
+          21.42
+        ],
+        [
+          "2025-03-14",
+          21.42
+        ],
+        [
+          "2025-02-13",
+          21.42
+        ],
+        [
+          "2025-01-09",
+          20.42
+        ],
+        [
+          "2024-11-07",
+          19.42
+        ],
+        [
+          "2024-10-10",
+          19.42
+        ],
+        [
+          "2024-09-13",
+          17.42
         ]
       ],
       "areaStyle": {
-        "opacity": 0.4,
-        "color": "rgba(194,124,19,0.4)"
+        "color": "rgba(194,124,19,0.5)"
       },
       "lineStyle": {
-        "width": 1,
-        "color": "rgba(194,124,19,0.8)"
+        "width": 0,
+        "color": "transparent"
       },
-      "stack": "zones",
-      "smooth": false
+      "symbol": "none",
+      "smooth": false,
+      "stack": "background"
     },
     {
       "name": "très insatisfait",
@@ -210,18 +309,62 @@
         [
           "2025-09-12",
           24.58
+        ],
+        [
+          "2025-09-12",
+          26.42
+        ],
+        [
+          "2025-07-10",
+          26.42
+        ],
+        [
+          "2025-06-13",
+          25.42
+        ],
+        [
+          "2025-05-16",
+          25.42
+        ],
+        [
+          "2025-04-10",
+          23.42
+        ],
+        [
+          "2025-03-14",
+          23.42
+        ],
+        [
+          "2025-02-13",
+          23.42
+        ],
+        [
+          "2025-01-09",
+          22.42
+        ],
+        [
+          "2024-11-07",
+          21.42
+        ],
+        [
+          "2024-10-10",
+          21.42
+        ],
+        [
+          "2024-09-13",
+          19.42
         ]
       ],
       "areaStyle": {
-        "opacity": 0.4,
-        "color": "rgba(194,61,19,0.4)"
+        "color": "rgba(194,61,19,0.5)"
       },
       "lineStyle": {
-        "width": 1,
-        "color": "rgba(194,61,19,0.8)"
+        "width": 0,
+        "color": "transparent"
       },
-      "stack": "zones",
-      "smooth": false
+      "symbol": "none",
+      "smooth": false,
+      "stack": "background"
     },
     {
       "name": "Edouard Philippe",
@@ -276,9 +419,13 @@
         "color": "#0095eb",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#0095eb"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Jordan Bardella",
@@ -333,9 +480,13 @@
         "color": "#04006e",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#04006e"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Marine Le Pen",
@@ -390,9 +541,13 @@
         "color": "#04006e",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#04006e"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Raphaël Glucksmann",
@@ -447,9 +602,13 @@
         "color": "#b339a4",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#b339a4"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "François Hollande",
@@ -500,9 +659,13 @@
         "color": "#b339a4",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#b339a4"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "François Ruffin",
@@ -557,9 +720,13 @@
         "color": "#de001e",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#de001e"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Fabien Roussel",
@@ -614,9 +781,13 @@
         "color": "#940014",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#940014"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Gérald Darmanin",
@@ -671,9 +842,13 @@
         "color": "#0095eb",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#0095eb"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Bruno Le Maire",
@@ -728,9 +903,13 @@
         "color": "#0095eb",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#0095eb"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "François Bayrou",
@@ -785,9 +964,13 @@
         "color": "#f28f2d",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#f28f2d"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Xavier Bertrand",
@@ -842,9 +1025,13 @@
         "color": "#0242e3",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#0242e3"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Olivier Faure",
@@ -899,9 +1086,13 @@
         "color": "#b339a4",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#b339a4"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Bernard Cazeneuve",
@@ -956,9 +1147,13 @@
         "color": "#b339a4",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#b339a4"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Marine Tondelier",
@@ -1013,9 +1208,13 @@
         "color": "#0bb029",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#0bb029"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Laurent Wauquiez",
@@ -1070,9 +1269,13 @@
         "color": "#0242e3",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#0242e3"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Yaël Braun-Pivet",
@@ -1127,9 +1330,13 @@
         "color": "#0095eb",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#0095eb"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Jean-Luc Mélenchon",
@@ -1184,9 +1391,13 @@
         "color": "#de001e",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#de001e"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Eric Zemmour",
@@ -1241,9 +1452,13 @@
         "color": "#010038",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#010038"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Michel Barnier",
@@ -1282,9 +1497,13 @@
         "color": "black",
         "width": 2
       },
+      "itemStyle": {
+        "color": "black"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Gabriel Attal",
@@ -1339,9 +1558,13 @@
         "color": "#0095eb",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#0095eb"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Bruno Retailleau",
@@ -1392,9 +1615,13 @@
         "color": "#0242e3",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#0242e3"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "David Lisnard",
@@ -1449,9 +1676,13 @@
         "color": "#0242e3",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#0242e3"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Jean Castex",
@@ -1494,9 +1725,13 @@
         "color": "black",
         "width": 2
       },
+      "itemStyle": {
+        "color": "black"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Marion Maréchal",
@@ -1523,9 +1758,13 @@
         "color": "#010038",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#010038"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Eric Ciotti",
@@ -1552,9 +1791,13 @@
         "color": "#0242e3",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#0242e3"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     },
     {
       "name": "Dominique de Villepin",
@@ -1573,9 +1816,13 @@
         "color": "#0242e3",
         "width": 2
       },
+      "itemStyle": {
+        "color": "#0242e3"
+      },
+      "showSymbol": true,
       "symbol": "circle",
-      "symbolSize": 4,
-      "showSymbol": false
+      "symbolSize": 6,
+      "smooth": false
     }
   ]
 }
