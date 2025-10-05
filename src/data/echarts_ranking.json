@@ -24,9 +24,9 @@
   },
   "grid": {
     "left": "3%",
-    "right": "15%",
-    "bottom": "10%",
-    "top": "15%",
+    "right": 145,
+    "bottom": 50,
+    "top": 60,
     "containLabel": true
   },
   "xAxis": {
