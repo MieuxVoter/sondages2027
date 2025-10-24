@@ -1,25 +1,18 @@
 import { Box, Card, CardContent, Typography, Button } from '@mui/material'
 import { Link, Outlet } from '@tanstack/react-router'
+import Plot from 'react-plotly.js'
+import rankingPlotData from '../data/ranking-plot-all.json'
 
 export function Info() {
   return (
-    <Box>
-      <Card sx={{ mb: 2 }}>
-        <CardContent>
-          <Typography variant="h4" gutterBottom>
-            Info Page
-          </Typography>
-          <Button
-            variant="contained"
-            component={Link}
-            to="/info/details"
-            sx={{ mt: 1 }}
-          >
-            View Details
-          </Button>
-        </CardContent>
-      </Card>
-      <Outlet />
-    </Box>
+      <Box sx={{ height: '600px', width:1 }}>
+                <Plot
+                    data={rankingPlotData.data as unknown as Plotly.Data[]}
+                    layout={rankingPlotData.layout as unknown as Partial<Plotly.Layout>}
+                    style={{ width: '100%', height: '100%' }}
+                    useResizeHandler={true}
+                    config={{ responsive: true }}
+                />
+            </Box>
   )
 }
