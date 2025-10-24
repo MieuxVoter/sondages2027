@@ -10,7 +10,7 @@ interface ThumbnailProps {
     sx?: SxProps
 }
 
-export const Thumbnail: FC<PropsWithChildren<ThumbnailProps>> = ({ sx, originalSize = { width: 800, height: 600 }, children }) => {
+export const Thumbnail: FC<PropsWithChildren<ThumbnailProps>> = ({ sx, originalSize = { width: 1200, height: 600 }, children }) => {
     const { ref, width, height } = useElementSize();
 
     const containerWidth = width || 1;

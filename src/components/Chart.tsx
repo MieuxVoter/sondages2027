@@ -19,9 +19,14 @@ const Chart: React.FC<ChartProps> = ({
   theme,
   onEvents
 }) => {
+  const optionWithNoAnimation = {
+    ...option,
+    animation: false
+  };
+
   return (
     <ReactECharts
-      option={option}
+      option={optionWithNoAnimation}
       style={style}
       className={className}
       theme={theme}

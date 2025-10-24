@@ -1,8 +1,11 @@
-import { Alert, Box, Card, CardContent, Typography } from "@mui/material"
+import { Alert, Box, Card, CardContent, Typography, alpha, useTheme } from "@mui/material"
 import { JmRankingChart } from "../chart/JmRankingChart"
 import { Thumbnail } from "../share/Thumbnail"
 
 export const WebMajoritaire: React.FC = () => {
+    const theme = useTheme();
+    const thumbnailSx = { height: "200px", width: 1, bgcolor: alpha(theme.palette.info.main, 0.07) };
+
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', p: 6 }}>
             <Alert severity="info" sx={{ mb: 4 }}>
@@ -13,47 +16,42 @@ export const WebMajoritaire: React.FC = () => {
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 4, width: '100%' }}>
                 <Box sx={{ display: 'flex', gap: 2 }}>
                     <Card sx={{ flex: 1 }}>
-                        <Thumbnail sx={{ height: "200px", width: 1 }}>
+                        <Thumbnail sx={thumbnailSx}>
                             <JmRankingChart />
                         </Thumbnail>
                         <CardContent>
-                            <Typography variant="h6">Titre 1</Typography>
+                            <Typography variant="h6">Evolution du Classement</Typography>
                             <Typography variant="body2" color="text.secondary">
-                                Description de la première carte
+                                Evolution du classement des candidats sondage après sondage
                             </Typography>
                         </CardContent>
                     </Card>
                     <Card sx={{ flex: 1 }}>
-                        <Thumbnail sx={{ height: "200px", width: 1 }}>
+                        <Thumbnail sx={thumbnailSx}>
                             <JmRankingChart />
                         </Thumbnail>
                         <CardContent>
-                            <Typography variant="h6">Titre 2</Typography>
+                            <Typography variant="h6">Grille de profile de mérite</Typography>
                             <Typography variant="body2" color="text.secondary">
-                                Description de la deuxième carte
+                                Evolution du profile de mérite d'un candidat au cours du temps
                             </Typography>
                         </CardContent>
                     </Card>
                 </Box>
                 <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
                     <Card sx={{ flex: 1, maxWidth: 'calc(50% - 4px)' }}>
-                        <Thumbnail sx={{ height: "200px", width: 1 }}>
+                        <Thumbnail sx={thumbnailSx}>
                             <JmRankingChart />
                         </Thumbnail>
                         <CardContent>
-                            <Typography variant="h6">Titre 3</Typography>
+                            <Typography variant="h6">Profile de mérite - sondage unique</Typography>
                             <Typography variant="body2" color="text.secondary">
-                                Description de la troisième carte
+                                Comparaison du profile de mérite des différents candidats pour un sondage donné
                             </Typography>
                         </CardContent>
                     </Card>
                 </Box>
             </Box>
-
-            {/* <Box sx={{ width: "100%", height: "600px" }}>
-                <JmRankingChart />
-            </Box> */}
-
         </Box>
 
     )
