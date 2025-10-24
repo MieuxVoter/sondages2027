@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 import Plot from 'react-plotly.js'
-import rankingPlotData from '../data/ranking-plot-all.json'
+import rankingPlotData from '../data/plotly_ranking.json'
 
 export function Uninominal() {
   return (
