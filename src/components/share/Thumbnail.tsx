@@ -10,7 +10,7 @@ interface ThumbnailProps {
     sx?: SxProps
 }
 
-export const Thumbnail: FC<PropsWithChildren<ThumbnailProps>> = ({ sx, originalSize = { width: 800, height: 600 } }) => {
+export const Thumbnail: FC<PropsWithChildren<ThumbnailProps>> = ({ sx, originalSize = { width: 800, height: 600 }, children }) => {
     const { ref, width, height } = useElementSize();
 
     const containerWidth = width || 1;
@@ -18,8 +18,6 @@ export const Thumbnail: FC<PropsWithChildren<ThumbnailProps>> = ({ sx, originalS
 
     const isFullHeight = containerWidth / containerHeight < originalSize.width / originalSize.height;
     const scale = !isFullHeight ? containerHeight / originalSize.height : containerWidth / originalSize.width;
-
-    console.log('Thumbnail render:', { width, height, scale });
 
     return (
         <Box ref={ref} sx={{
@@ -32,8 +30,8 @@ export const Thumbnail: FC<PropsWithChildren<ThumbnailProps>> = ({ sx, originalS
                 transform: `scale(${scale})`,
                 width: originalSize.width,
                 height: originalSize.height,
-                backgroundColor: 'red'
             }}>
+                {children}
             </Box>
         </Box>
     )
