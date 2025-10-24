@@ -1,5 +1,5 @@
 
-export const MobHome: React.FC = () => {
+export const MobMajoritaire: React.FC = () => {
     return (
         <div>
             couccou

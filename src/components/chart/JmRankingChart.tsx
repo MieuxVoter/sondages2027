@@ -23,11 +23,12 @@ const rankingChartOption: EChartsOption = {
   }
 
 export const JmRankingChart : React.FC = () => {
-    const isMobile = useIsMobile()
+    // const isMobile = useIsMobile()
+    const isMobile = true; 
 
     return (
         <Box sx={{ width: 1, height: 1,
-            transform: isMobile ? 'scale(0.8)' : 'scale(1)',
+            transform: isMobile ? 'scale(0.5)' : 'scale(1)',
             transformOrigin: 'top left'
         }}>
           <Chart option={rankingChartOption} />

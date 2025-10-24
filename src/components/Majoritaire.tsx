@@ -1,9 +1,9 @@
 import { useIsMobile } from '../hooks/useIsMobile'
-import { MobHome } from './mobile/MobHome'
-import { WebHome } from './web/WebHome'
+import { MobMajoritaire } from './mobile/MobMajoritaire'
+import { WebMajoritaire } from './web/WebMajoritaire'
 
 export function Majoritaire() {
   const isMobile = useIsMobile()
 
-  return isMobile ? <MobHome /> : <WebHome />
+  return isMobile ? <MobMajoritaire /> : <WebMajoritaire />
 }
