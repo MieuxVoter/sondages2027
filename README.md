@@ -1,69 +1,81 @@
-# React + TypeScript + Vite
+# JM Tracker React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Application React pour visualiser et suivre les résultats de sondages utilisant 
+    - le **Jugement Majoritaire**
+    - le **Vote par Approbation**
+    - le **Scrutin Uninominale**
 
-Currently, two official plugins are available:
+## À propos du Jugement Majoritaire
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Le **jugement majoritaire** est une méthode de vote innovante où chaque électeur attribue une mention (très satisfait, plutôt satisfait, ni satisfait ni insatisfait, plutôt insatisfait, très insatisfait) à chaque candidat.
 
-## Expanding the ESLint configuration
+Le classement final est déterminé par la **mention majoritaire** de chaque candidat, c'est-à-dire la mention qui divise les évaluations en deux parts égales. Cette approche permet d'éviter les votes stratégiques et offre une représentation plus nuancée de l'opinion publique.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Technologies
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **React 19** - Bibliothèque UI
+- **TypeScript** - Typage statique
+- **Vite** - Build tool et dev server
+- **Material-UI (MUI)** - Composants UI
+- **ECharts** - Bibliothèque de graphiques
+- **ESLint** - Linting avec règles de production
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Développement
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Démarrer le serveur de développement
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+L'application sera accessible sur `http://localhost:5173/`
+
+### Démarrer avec accès réseau (mobile)
+
+Pour accéder au site depuis votre téléphone sur le même réseau :
+
+```bash
+npm run dev -- --host
+```
+
+L'application sera accessible via l'adresse IP affichée (ex: `http://192.168.x.x:5173/`)
+
+### Linting
+
+```bash
+npm run lint
+```
+
+### Build de production
+
+```bash
+npm run build
+```
+
+Récupérer le site généré dans le répertoire /dist
+
+### Prévisualiser le build
+
+```bash
+npm run preview
+```
+
+## Graphiques disponibles
+
+1. **Evolution du Classement** - Evolution du classement des candidats sondage après sondage
+2. **Profile de mérite - sondage unique** - Comparaison du profile de mérite des différents candidats pour un sondage donné
+3. **Grille de profile de mérite** - Evolution du profile de mérite d'un candidat au cours du temps
+
+## License
+
+[Votre licence ici]
+
+## Contributeurs
+
+[Vos contributeurs ici]

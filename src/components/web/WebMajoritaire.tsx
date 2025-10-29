@@ -3,8 +3,10 @@ import { JmMeritChart } from "../chart/echart/JmMeritChart";
 import { JmRankingChart } from "../chart/echart/JmRankingChart";
 import { JmTimeMeritChart } from "../chart/echart/JmTimeMerit";
 import { ChartCard } from "../share/ChartCard";
+import { useNavigate } from "@tanstack/react-router";
 
 export const WebMajoritaire: React.FC = () => {
+    const navigate = useNavigate();
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', p: 6 }}>
             <Alert severity="info" sx={{ mb: 4 }}>
@@ -18,14 +20,14 @@ export const WebMajoritaire: React.FC = () => {
                         title="Evolution du Classement"
                         description="Evolution du classement des candidats sondage après sondage"
                         chart={<JmRankingChart />}
-                        onClick={() => console.log('Card 1 clicked: Evolution du Classement')}
+                        onClick={() => navigate({ to: '/majoritaire/evolution-classement' })}
                         sx={{ flex: 1 }}
                     />
                     <ChartCard
                         title="Profile de mérite - sondage unique"
                         description="Comparaison du profile de mérite des différents candidats pour un sondage donné"
                         chart={<JmMeritChart />}
-                        onClick={() => console.log('Card 2 clicked: Profile de mérite - sondage unique')}
+                        onClick={() => navigate({ to: '/majoritaire/profile-merite-sondage' })}
                         sx={{ flex: 1 }}
                     />
                 </Box>
@@ -34,7 +36,7 @@ export const WebMajoritaire: React.FC = () => {
                         title="Grille de profile de mérite"
                         description="Evolution du profile de mérite d'un candidat au cours du temps"
                         chart={<JmTimeMeritChart />}
-                        onClick={() => console.log('Card 3 clicked: Grille de profile de mérite')}
+                        onClick={() => navigate({ to: '/majoritaire/grille-profile-merite' })}
                         sx={{ flex: 1, maxWidth: 'calc(50% - 4px)' }}
                     />
                 </Box>
