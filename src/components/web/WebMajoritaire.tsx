@@ -1,6 +1,8 @@
 import { Alert, Box, Card, CardContent, Typography, alpha, useTheme } from "@mui/material";
 import { JmRankingChart } from "../chart/echart/JmRankingChart";
 import { Thumbnail } from "../share/Thumbnail";
+import { JmMeritChart } from "../chart/echart/JmMeritChart";
+import { JmTimeMeritChart } from "../chart/echart/JmTimeMerit";
 
 export const WebMajoritaire: React.FC = () => {
     const theme = useTheme();
@@ -26,22 +28,9 @@ export const WebMajoritaire: React.FC = () => {
                             </Typography>
                         </CardContent>
                     </Card>
-                    <Card sx={{ flex: 1 }}>
+                    <Card sx={{ flex: 1, }}>
                         <Thumbnail sx={thumbnailSx}>
-                            <JmRankingChart />
-                        </Thumbnail>
-                        <CardContent>
-                            <Typography variant="h6">Grille de profile de mérite</Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                Evolution du profile de mérite d'un candidat au cours du temps
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                </Box>
-                <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
-                    <Card sx={{ flex: 1, maxWidth: 'calc(50% - 4px)' }}>
-                        <Thumbnail sx={thumbnailSx}>
-                            <JmRankingChart />
+                            <JmMeritChart/>
                         </Thumbnail>
                         <CardContent>
                             <Typography variant="h6">Profile de mérite - sondage unique</Typography>
@@ -50,6 +39,20 @@ export const WebMajoritaire: React.FC = () => {
                             </Typography>
                         </CardContent>
                     </Card>
+                </Box>
+                <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
+                    <Card sx={{ flex: 1, maxWidth: 'calc(50% - 4px)' }}>
+                        <Thumbnail sx={thumbnailSx}>
+                            <JmTimeMeritChart />
+                        </Thumbnail>
+                        <CardContent>
+                            <Typography variant="h6">Grille de profile de mérite</Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                Evolution du profile de mérite d'un candidat au cours du temps
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                    
                 </Box>
             </Box>
         </Box>
