@@ -1,12 +1,12 @@
-import { Box } from "@mui/material"
 import type { FC } from "react"
 import { JmRankingChart } from "../../chart/echart/JmRankingChart"
+import { WebJmChart } from "./WebJmChart"
 
 export const WebRankingChart: FC = () => {
     return (
-        <Box sx={{ width: '100%', height: '600px', p: 4 }}>
+        <WebJmChart>
             <JmRankingChart />
-        </Box>
+        </WebJmChart>
     )
 }
 
