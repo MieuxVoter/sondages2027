@@ -13,6 +13,9 @@ import { JmRankingChart } from './components/chart/echart/JmRankingChart'
 import { JmMeritChart } from './components/chart/echart/JmMeritChart'
 import { JmTimeMeritChart } from './components/chart/echart/JmTimeMerit'
 import { Box } from '@mui/material'
+import { WebTimeMeritChart } from './components/web/chart-page/WebTimeMeritChart'
+import { WebRankingChart } from './components/web/chart-page/WebRankingChart'
+import { WebMeritChart } from './components/web/chart-page/WebMeritChart'
 
 const rootRoute = createRootRoute({
   component: App,
@@ -42,31 +45,19 @@ const majoritaireIndexRoute = createRoute({
 const evolutionClassementRoute = createRoute({
   getParentRoute: () => majoritaireRoute,
   path: '/evolution-classement',
-  component: () => (
-    <Box sx={{ width: '100%', height: '600px', p: 4 }}>
-      <JmRankingChart />
-    </Box>
-  ),
+  component: WebRankingChart
 })
 
 const profileMeriteSondageRoute = createRoute({
   getParentRoute: () => majoritaireRoute,
   path: '/profile-merite-sondage',
-  component: () => (
-    <Box sx={{ width: '100%', height: '600px', p: 4 }}>
-      <JmMeritChart />
-    </Box>
-  ),
+  component: WebMeritChart 
 })
 
 const grilleProfileMeriteRoute = createRoute({
   getParentRoute: () => majoritaireRoute,
   path: '/grille-profile-merite',
-  component: () => (
-    <Box sx={{ width: '100%', height: '600px', p: 4 }}>
-      <JmTimeMeritChart />
-    </Box>
-  ),
+  component: WebTimeMeritChart,
 })
 
 const uninominalRoute = createRoute({
