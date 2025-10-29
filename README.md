@@ -74,8 +74,7 @@ npm run preview
 
 ## License
 
-[Votre licence ici]
+
 
 ## Contributeurs
 
-[Vos contributeurs ici]
