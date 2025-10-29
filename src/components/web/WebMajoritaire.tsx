@@ -1,13 +1,10 @@
-import { Alert, Box, Card, CardContent, Typography, alpha, useTheme } from "@mui/material";
-import { JmRankingChart } from "../chart/echart/JmRankingChart";
-import { Thumbnail } from "../share/Thumbnail";
+import { Alert, Box } from "@mui/material";
 import { JmMeritChart } from "../chart/echart/JmMeritChart";
+import { JmRankingChart } from "../chart/echart/JmRankingChart";
 import { JmTimeMeritChart } from "../chart/echart/JmTimeMerit";
+import { ChartCard } from "../share/ChartCard";
 
 export const WebMajoritaire: React.FC = () => {
-    const theme = useTheme();
-    const thumbnailSx = { height: "200px", width: 1, bgcolor: alpha(theme.palette.info.main, 0.07) };
-
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', p: 6 }}>
             <Alert severity="info" sx={{ mb: 4 }}>
@@ -17,45 +14,33 @@ export const WebMajoritaire: React.FC = () => {
             </Alert>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 4, width: '100%' }}>
                 <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Card sx={{ flex: 1 }}>
-                        <Thumbnail sx={thumbnailSx}>
-                            <JmRankingChart />
-                        </Thumbnail>
-                        <CardContent>
-                            <Typography variant="h6">Evolution du Classement</Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                Evolution du classement des candidats sondage après sondage
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                    <Card sx={{ flex: 1, }}>
-                        <Thumbnail sx={thumbnailSx}>
-                            <JmMeritChart/>
-                        </Thumbnail>
-                        <CardContent>
-                            <Typography variant="h6">Profile de mérite - sondage unique</Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                Comparaison du profile de mérite des différents candidats pour un sondage donné
-                            </Typography>
-                        </CardContent>
-                    </Card>
+                    <ChartCard
+                        title="Evolution du Classement"
+                        description="Evolution du classement des candidats sondage après sondage"
+                        chart={<JmRankingChart />}
+                        onClick={() => console.log('Card 1 clicked: Evolution du Classement')}
+                        sx={{ flex: 1 }}
+                    />
+                    <ChartCard
+                        title="Profile de mérite - sondage unique"
+                        description="Comparaison du profile de mérite des différents candidats pour un sondage donné"
+                        chart={<JmMeritChart />}
+                        onClick={() => console.log('Card 2 clicked: Profile de mérite - sondage unique')}
+                        sx={{ flex: 1 }}
+                    />
                 </Box>
                 <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
-                    <Card sx={{ flex: 1, maxWidth: 'calc(50% - 4px)' }}>
-                        <Thumbnail sx={thumbnailSx}>
-                            <JmTimeMeritChart />
-                        </Thumbnail>
-                        <CardContent>
-                            <Typography variant="h6">Grille de profile de mérite</Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                Evolution du profile de mérite d'un candidat au cours du temps
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                    
+                    <ChartCard
+                        title="Grille de profile de mérite"
+                        description="Evolution du profile de mérite d'un candidat au cours du temps"
+                        chart={<JmTimeMeritChart />}
+                        onClick={() => console.log('Card 3 clicked: Grille de profile de mérite')}
+                        sx={{ flex: 1, maxWidth: 'calc(50% - 4px)' }}
+                    />
                 </Box>
             </Box>
         </Box>
 
     )
 }
+
