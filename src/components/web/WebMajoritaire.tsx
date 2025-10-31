@@ -1,9 +1,9 @@
 import { Alert, Box } from "@mui/material";
-import { JmMeritChart } from "../chart/echart/JmMeritChart";
-import { JmRankingChart } from "../chart/echart/JmRankingChart";
-import { JmTimeMeritChart } from "../chart/echart/JmTimeMerit";
-import { ChartCard } from "../share/ChartCard";
 import { useNavigate } from "@tanstack/react-router";
+import { JmMeritChart } from "../chart/echart/JmMeritChart";
+import { JmTimeMeritChart } from "../chart/echart/JmTimeMerit";
+import { MjRankingChart } from "../chart/echart/ranking-chart/MjRankingChart";
+import { ChartCard } from "../share/ChartCard";
 
 export const WebMajoritaire: React.FC = () => {
     const navigate = useNavigate();
@@ -19,7 +19,7 @@ export const WebMajoritaire: React.FC = () => {
                     <ChartCard
                         title="Evolution du Classement"
                         description="Evolution du classement des candidats sondage après sondage"
-                        chart={<JmRankingChart />}
+                        chart={<MjRankingChart />}
                         onClick={() => navigate({ to: '/majoritaire/evolution-classement' })}
                         sx={{ flex: 1 }}
                     />

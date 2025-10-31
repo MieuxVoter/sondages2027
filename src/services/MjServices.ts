@@ -24,7 +24,7 @@ import type { Survey } from '../types/survey.types';
 //   return await jsonResponse.json();
 // }
 
-//Note: Si vous êtes bloqué par le rate limit GitHub, utilisez un proxy CORS:
+//Note: En attendant de régler les problèmes de CORS avec l'API GitHub, on utilise un proxy public.
 export async function getLatestSurveyData(): Promise<Survey> {
   const proxyUrl = 'https://corsproxy.io/?';
   const jsonUrl = 'https://github.com/MieuxVoter/mj-tracker-2027/releases/download/latest-data/latest_survey_mj_compact.json';

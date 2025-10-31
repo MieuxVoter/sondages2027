@@ -1,5 +1,5 @@
 import { alpha, Box, Card, CardContent, Typography, useTheme } from "@mui/material";
-import { JmRankingChart } from "../chart/echart/JmRankingChart";
+import { MjRankingChart } from "../chart/echart/ranking-chart/MjRankingChart";
 import { Thumbnail } from "../share/Thumbnail";
 
 export const MobMajoritaire: React.FC = () => {
@@ -9,7 +9,7 @@ export const MobMajoritaire: React.FC = () => {
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: 2, p: 2 }}>
             <Card elevation={2} sx={{ width: 1 }}>
                 <Thumbnail sx={thumbnailSx}>
-                    <JmRankingChart />
+                    <MjRankingChart />
                 </Thumbnail>
                 <CardContent>
                     <Typography variant="h6">Evolution du Classement</Typography>
@@ -20,7 +20,7 @@ export const MobMajoritaire: React.FC = () => {
             </Card>
             <Card elevation={2} sx={{ width: 1 }}>
                 <Thumbnail sx={thumbnailSx}>
-                    <JmRankingChart />
+                    <MjRankingChart />
                 </Thumbnail>
                 <CardContent>
                     <Typography variant="h6">Profile de mérite - sondage unique</Typography>
@@ -31,7 +31,7 @@ export const MobMajoritaire: React.FC = () => {
             </Card>
             <Card elevation={2} sx={{ width: 1 }}>
                 <Thumbnail sx={thumbnailSx}>
-                    <JmRankingChart />
+                    <MjRankingChart />
                 </Thumbnail>
                 <CardContent>
                     <Typography variant="h6">Grille de profile de mérite</Typography>

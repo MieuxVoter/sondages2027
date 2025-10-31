@@ -48,3 +48,15 @@ export interface Grade {
   rank: number;
   label: string;
 }
+
+export interface DateRank {
+  date: string;
+  rank: number;
+}
+
+export type CandidateRankings = Record<string, DateRank[]>;
+
+export interface EChartsSeriesData {
+  name: string;
+  data: [string, number][];
+}
