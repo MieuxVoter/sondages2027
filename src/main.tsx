@@ -5,15 +5,16 @@ import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { router } from './router.tsx'
 import { store } from './store/store'
+import { themeColor } from './colors.ts'
 
 const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#003d8a',
+      main: themeColor.primary,
     },
     secondary: {
-      main: '#f50057',
+      main: themeColor.secondary,
     },
   },
 })
