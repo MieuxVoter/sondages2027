@@ -7,7 +7,9 @@ interface MjMeritChartProps {
   isThumbnail?: boolean;
 }
 
-export const MjMeritChart: React.FC<MjMeritChartProps> = ({ isThumbnail = false }) => {
+export const MjMeritChart: React.FC<MjMeritChartProps> = ({ 
+  // isThumbnail = false 
+}) => {
   const theme = useTheme();
 
   const meritChartOption: EChartsOption = {
