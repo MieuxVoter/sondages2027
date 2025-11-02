@@ -87,7 +87,10 @@ const routeTree = rootRoute.addChildren([
   testPlotly,
 ])
 
-export const router = createRouter({ routeTree })
+export const router = createRouter({
+  routeTree,
+  basepath: '/france-election-tracking-2027'
+})
 
 declare module '@tanstack/react-router' {
   interface Register {
