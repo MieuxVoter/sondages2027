@@ -31,7 +31,7 @@ export const mjMeritChartConfig: EChartsOption = {
     orient: 'horizontal' as const
   },
   grid: {
-    left: '15%',
+    left: '4%',
     right: '4%',
     bottom: '8%',
     top: '8%',

@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import type { EChartsOption } from 'echarts';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -8,6 +8,7 @@ import { rankingChartConfig } from './rankingChartConfig';
 import { useCandidateRankingSeries } from './useCandidateRankingSeries';
 import { useGradeAreaSeries } from './useGradeAreaSeries';
 import Chart from '../../../share/Chart';
+import { ChartTitle } from '../../../share/ChartTitle';
 
 interface MjRankingChartProps {
   isThumbnail?: boolean;
@@ -37,15 +38,10 @@ export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = fa
         north={
           <>
             {!isThumbnail &&
-              <Box>
-                <Typography variant="h5">Classement des candidats à l'éléction présidentiel 2027</Typography>
-                <Typography variant="subtitle1">
-                  source : IPSOS, commanditaire La Tribune Dimanche, dernier sondage: {lastPollDate ? new Date(lastPollDate).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : 'N/A'}
-                </Typography>
-                <Typography variant="subtitle1">
-                  scrutin : Jugement majoritaire 
-                </Typography>
-              </Box>
+            <ChartTitle
+              title="Classement des candidats à l'éléction présidentiel 2027"
+              subtitle1={`source : IPSOS, commanditaire La Tribune Dimanche, dernier sondage: ${lastPollDate ? new Date(lastPollDate).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : 'N/A'}`}
+              subtitle2="scrutin : Jugement majoritaire "/>
             }
           </>
         }

@@ -1,12 +1,14 @@
-import { Box, FormControl, InputLabel, MenuItem, Select, useTheme } from "@mui/material";
+import { Box, MenuItem, Select, Typography, useTheme } from "@mui/material";
 import type { EChartsOption } from "echarts";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { graphColor } from "../../../../colors";
 import { selectCandidateDistributionByPollIndex, selectMeritChartSeriesByPollIndexForECharts, selectPt1Dates } from "../../../../store/jm-slice/jm-selector";
 import type { RootState } from "../../../../store/store";
 import Chart from "../../../share/Chart";
+import { ChartTitle } from "../../../share/ChartTitle";
+import { BorderLayout } from "../../../share/layout/BorderLayout";
 import { mjMeritChartConfig } from "./meritChatConfig";
-import { graphColor } from "../../../../colors";
 
 interface MjMeritChartProps {
   isThumbnail?: boolean;
@@ -66,34 +68,50 @@ export const MjMeritChart: React.FC<MjMeritChartProps> = ({
     }),
   }
 
-  return (
-    <Box sx={{ width: 1, height: 1, display: 'flex', flexDirection: 'column' }}>
-      <Box sx={{ p: 2 }}>
-        <FormControl sx={{ minWidth: 200 }}>
-          <InputLabel id="poll-select-label">Sondage</InputLabel>
-          <Select
-            labelId="poll-select-label"
-            id="poll-select"
-            value={pollIndex}
-            label="Sondage"
-            onChange={(e) => setPollIndex(e.target.value as number)}
-          >
-            {pt1Dates.map((dateObj) => (
-              <MenuItem key={dateObj.index} value={dateObj.index}>
-                {new Date(dateObj.date).toLocaleDateString('fr-FR', {
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric'
-                })}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Box>
-      <Box sx={{ flex: 1 }}>
-        <Chart option={meritChartOption} />
-      </Box>
-    </Box>
-    
+  return (<>
+    <BorderLayout
+      north={!isThumbnail &&
+        <ChartTitle
+          title="Profide de mérite - sondage unique"
+          subtitle1={`Comparaison du profile de mérite des différents candidats pour un sondage donné au scrutin majoritaire`}
+        />}
+      center={
+        <Box sx={{ width: 1, height: 1, display: 'flex', flexDirection: 'column' }}>
+          {
+            !isThumbnail && <Box sx={{ }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "start", gap: 2 }}>
+                <Typography color="text.secondary">Date du sondage :</Typography>
+                <Select
+                  size="small"
+                  labelId="poll-select-label"
+                  id="poll-select"
+                  value={pollIndex}
+                  onChange={(e) => setPollIndex(e.target.value as number)}
+                >
+                  {pt1Dates.map((dateObj) => (
+                    <MenuItem key={dateObj.index} value={dateObj.index}>
+                      {new Date(dateObj.date).toLocaleDateString('fr-FR', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                      })}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </Box>
+            </Box>
+          }
+          <Box sx={{ flex: 1 }}>
+            <Chart option={meritChartOption} />
+          </Box>
+        </Box>
+      }
+    >
+
+    </BorderLayout>
+
+  </>
+
+
   )
 }

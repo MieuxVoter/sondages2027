@@ -26,7 +26,7 @@ export const selectLastPt1Date = createSelector(
         if (dates.length === 0) {
             return null;
         }
-        return dates[dates.length - 1].date;
+        return dates[0].date;
     }
 );
 
