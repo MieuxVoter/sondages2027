@@ -2,6 +2,7 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
+  createHashHistory,
   redirect,
   Outlet,
 } from '@tanstack/react-router'
@@ -87,9 +88,12 @@ const routeTree = rootRoute.addChildren([
   testPlotly,
 ])
 
+const hashHistory = createHashHistory()
+
 export const router = createRouter({
   routeTree,
-  basepath: '/france-election-tracking-2027'
+  basepath: '/france-election-tracking-2027',
+  history: hashHistory
 })
 
 declare module '@tanstack/react-router' {
