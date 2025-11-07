@@ -17,7 +17,6 @@ export function App() {
       dispatch(loadMajorityJugmentData())
     }
   }, [dispatch, jmData])
-  console.log('jmData dans Majoritaire:' , jmData);
   const isMobile = useIsMobile()
 
   return isMobile ? <Mobile /> : <Web />

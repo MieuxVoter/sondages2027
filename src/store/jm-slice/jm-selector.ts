@@ -183,5 +183,21 @@ export const selectMeritChartSeriesByPollIndexForECharts = createSelector(
     }
 );
 
-
-
+export const selectTimeMeritChartSeriesByCandidateIdForECharts = createSelector(
+    [selectJmData, (_state: RootState, candidateId: string) => candidateId],
+    (jmData, candidateId) => {
+        if (!jmData) {
+            return [];
+        }
+        const grades = jmData.poll_types.pt1.grades;
+        const sortedPolls = [...jmData.polls].reverse();
+        return grades.map(grade => ({
+            name: grade.label,
+            data: sortedPolls.map(poll => {
+                const distribution = poll.results[candidateId].distribution;
+                return distribution[grade.rank - 1];
+            })
+        }));
+        return candidateId
+    }
+);
