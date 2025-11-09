@@ -1,14 +1,6 @@
 import type { EChartsOption } from 'echarts';
 
 export const mjMeritChartConfig: EChartsOption = {
-//     title: {
-//     text: 'Evaluation au jugement majoritaire',
-//     subtext: 'date: 2025-01-09, source: IPSOS, commanditaire: La Tribune Dimanche',
-//     left: 'center',
-//     textStyle: {
-//       fontWeight: 'bold'
-//     }
-//   },
   tooltip: {
     trigger: 'item' as const,
     formatter: (params: any) => {

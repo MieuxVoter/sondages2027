@@ -198,6 +198,5 @@ export const selectTimeMeritChartSeriesByCandidateIdForECharts = createSelector(
                 return distribution[grade.rank - 1];
             })
         }));
-        return candidateId
     }
 );
