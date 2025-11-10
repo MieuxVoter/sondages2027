@@ -1,14 +1,6 @@
 import type { EChartsOption } from 'echarts';
 
 export const timeMeritConfig: EChartsOption = {
-//   "title": {
-//     "text": "Evolution des mentions au jugement majoritaire\npour le candidat François Ruffin",
-//     "subtext": "source: IPSOS, commanditaire: La Tribune Dimanche, dernier sondage: 2025-09-12",
-//     "left": "center",
-//     "textStyle": {
-//       "fontWeight": "bold"
-//     }
-//   },
   tooltip: {
     trigger: "axis",
     axisPointer: {
@@ -27,10 +19,10 @@ export const timeMeritConfig: EChartsOption = {
     orient: "horizontal"
   },
   grid: {
-    left: "3%",
+    left: "4%",
     right: "4%",
-    bottom: "15%",
-    top: "20%",
+    bottom: "8%",
+    top: "8%",
     containLabel: true
   },
   xAxis: {

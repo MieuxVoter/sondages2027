@@ -1,14 +1,19 @@
 import { Box } from "@mui/material";
 import type { EChartsOption } from "echarts";
 import { useSelector } from "react-redux";
+import { graphColor } from "../../../../colors";
 import { selectPt1Dates, selectTimeMeritChartSeriesByCandidateIdForECharts } from "../../../../store/jm-slice/jm-selector";
 import type { RootState } from "../../../../store/store";
 import Chart from "../../../share/Chart";
+import { ChartTitle } from "../../../share/ChartTitle";
+import { BorderLayout } from "../../../share/layout/BorderLayout";
 import { timeMeritConfig } from "./timeMeritConfig";
-import { graphColor } from "../../../../colors";
 
+interface MjTimeMeritChartProps {
+    isThumbnail?: boolean;
+}
 
-export const MjTimeMeritChart: React.FC = () => {
+export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ isThumbnail = false }) => {
     const timeMeritChartSerie = useSelector((state: RootState) => selectTimeMeritChartSeriesByCandidateIdForECharts(state, "FR"));
     const pt1Dates = useSelector(selectPt1Dates);
 
@@ -18,6 +23,7 @@ export const MjTimeMeritChart: React.FC = () => {
             ...timeMeritConfig.xAxis,
             data: pt1Dates.map(d => d.date).reverse(),
         },
+        legend: isThumbnail ? { show: false } : timeMeritConfig.legend,
         series: timeMeritChartSerie.map(({ name, data }: any, index: number) => (
             {
                 name,
@@ -35,21 +41,25 @@ export const MjTimeMeritChart: React.FC = () => {
                     focus: 'series' as const
                 },
                 data,
-                
+
             }
         ))
             || [],
     }
 
     return (
-        <Box sx={{ width: 1, display: 'flex', flexDirection: 'column' }}>
-            <Box sx={{ width: 1, height: 400 }}>
-                <Chart option={timeMeritChartOption} />
-            </Box>
-            <Box component="pre" sx={{ mt: 2, p: 2, bgcolor: 'grey.100', overflow: 'auto', fontSize: '0.75rem', maxHeight: 300 }}>
-                <div>Serie data:</div>
-                {JSON.stringify(timeMeritChartOption, null, 2)}
-            </Box>
-        </Box>
+        <BorderLayout
+            north={!isThumbnail &&
+                <ChartTitle
+                    title="Évolution des mentions pour François Ruffin"
+                    subtitle1="Source : IPSOS - La Tribune Dimanche"
+                />
+            }
+            center={
+                <Box sx={{ width: 1, height: 1 }}>
+                    <Chart option={timeMeritChartOption} />
+                </Box>
+            }
+        />
     )
 }

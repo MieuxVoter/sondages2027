@@ -35,7 +35,7 @@ export const WebMajoritaire: React.FC = () => {
                     <ChartCard
                         title="Grille de profile de mérite"
                         description="Evolution du profile de mérite d'un candidat au cours du temps"
-                        chart={<MjTimeMeritChart />}
+                        chart={<MjTimeMeritChart isThumbnail/>}
                         onClick={() => navigate({ to: '/majoritaire/grille-profile-merite' })}
                         sx={{ flex: 1, maxWidth: 'calc(50% - 4px)' }}
                     />
