@@ -13,7 +13,6 @@ export function App() {
   useEffect(() => {
     // Ne charger que si les données ne sont pas déjà présentes
     if (!jmData) {
-      console.log('Dispatch loadMajorityJugmentData from Majoritaire')
       dispatch(loadMajorityJugmentData())
     }
   }, [dispatch, jmData])

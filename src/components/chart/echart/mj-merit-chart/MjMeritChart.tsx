@@ -78,7 +78,7 @@ export const MjMeritChart: React.FC<MjMeritChartProps> = ({
       center={
         <Box sx={{ width: 1, height: 1, display: 'flex', flexDirection: 'column' }}>
           {
-            !isThumbnail && <Box sx={{ }}>
+            !isThumbnail && 
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "start", gap: 2 }}>
                 <Typography color="text.secondary">Date du sondage :</Typography>
                 <Select
@@ -99,7 +99,6 @@ export const MjMeritChart: React.FC<MjMeritChartProps> = ({
                   ))}
                 </Select>
               </Box>
-            </Box>
           }
           <Box sx={{ flex: 1 }}>
             <Chart option={meritChartOption} />

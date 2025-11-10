@@ -2,7 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import type { CandidateRankings, EChartsSeriesData } from '../../types/survey.types';
 import type { RootState } from '../store';
 
-const selectJmData = (state: RootState) => state.majorityJudgment.jmData;
+const selectJmData = (state: RootState) => state.majorityJudgment.jmData ;
 
 export const selectPt1Dates = createSelector(
     [selectJmData],
@@ -200,3 +200,39 @@ export const selectTimeMeritChartSeriesByCandidateIdForECharts = createSelector(
         }));
     }
 );
+
+export const selectLastPool = createSelector(
+    [selectJmData],
+    (jmData) => {
+        if (!jmData || jmData.polls.length === 0) {
+            return null;
+        }
+        return jmData.polls[0];
+    }
+)
+ 
+export const selectCandidateOrderedByLatestRank = createSelector(
+    [selectJmData, selectLastPool],
+    (jmData, lastPool) => {
+        if(!jmData || !lastPool) {
+            return [];
+        }
+        const result = Object.entries(jmData.candidates).map(([candidateId, candidate]) => ({
+            candidateId,
+            name: candidate.name,
+        }))
+        .map(({ candidateId, name }) => {
+            return { candidateId, name, rank: lastPool.results[candidateId].rank };
+        })
+        .sort((a, b) => a.rank - b.rank);
+        return result;
+    }
+)
+
+export const selectCandidateInfo = createSelector(
+    [selectJmData, (_state: RootState, candidateId: string) => candidateId], (jmData, candidateId) => {
+        if(!jmData){null}
+        return jmData?.candidates[candidateId];
+    }
+)
+        

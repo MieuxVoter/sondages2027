@@ -1,8 +1,9 @@
-import { Box } from "@mui/material";
+import { Box, MenuItem, Select, Typography } from "@mui/material";
 import type { EChartsOption } from "echarts";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { graphColor } from "../../../../colors";
-import { selectPt1Dates, selectTimeMeritChartSeriesByCandidateIdForECharts } from "../../../../store/jm-slice/jm-selector";
+import { selectCandidateInfo, selectCandidateOrderedByLatestRank, selectPt1Dates, selectTimeMeritChartSeriesByCandidateIdForECharts } from "../../../../store/jm-slice/jm-selector";
 import type { RootState } from "../../../../store/store";
 import Chart from "../../../share/Chart";
 import { ChartTitle } from "../../../share/ChartTitle";
@@ -14,7 +15,10 @@ interface MjTimeMeritChartProps {
 }
 
 export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ isThumbnail = false }) => {
-    const timeMeritChartSerie = useSelector((state: RootState) => selectTimeMeritChartSeriesByCandidateIdForECharts(state, "FR"));
+    const [selectedCandidate, setSelectedCandidate] = useState<string>('FR')
+    const candidateInfo = useSelector((state: RootState) => selectCandidateInfo(state, selectedCandidate))
+    const candidates = useSelector(selectCandidateOrderedByLatestRank)
+    const timeMeritChartSerie = useSelector((state: RootState) => selectTimeMeritChartSeriesByCandidateIdForECharts(state, selectedCandidate));
     const pt1Dates = useSelector(selectPt1Dates);
 
     const timeMeritChartOption: EChartsOption = {
@@ -51,14 +55,42 @@ export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ isThumbnail 
         <BorderLayout
             north={!isThumbnail &&
                 <ChartTitle
-                    title="Évolution des mentions pour François Ruffin"
+                    title={`Évolution des mentions pour ${candidateInfo?.name}`}
                     subtitle1="Source : IPSOS - La Tribune Dimanche"
                 />
             }
             center={
-                <Box sx={{ width: 1, height: 1 }}>
-                    <Chart option={timeMeritChartOption} />
+                <Box sx={{ width: 1, height: 1, display: 'flex', flexDirection: 'column' }}>
+                    {
+                        !isThumbnail &&
+                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'start', gap: 2 }}>
+                            <Typography color="text.secondary"> Candidat :</Typography>
+                            <Select
+                                size="small"
+                                labelId="candidate-select-label"
+                                id="candidate-select"
+                                value={selectedCandidate}
+                                onChange={(e) => {
+                                    console.log(e.target.value);
+                                    setSelectedCandidate(e.target.value);
+                                }}
+                            >
+                                {candidates?.map(({ candidateId, name}) => {
+                                    return (
+                                        <MenuItem key={candidateId} value={candidateId}>
+                                            {name}
+                                        </MenuItem>
+                                    )
+                                })
+                                }
+                            </Select>
+                        </Box>
+                    }
+                    <Box sx={{ width: 1, height: 1 }}>
+                        <Chart option={timeMeritChartOption} />
+                    </Box>
                 </Box>
+
             }
         />
     )
