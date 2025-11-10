@@ -17,6 +17,10 @@ export function App() {
     }
   }, [dispatch, jmData])
   const isMobile = useIsMobile()
-
-  return isMobile ? <Mobile /> : <Web />
+  
+  return (
+    <>
+      {jmData && (isMobile ? <Mobile /> : <Web />)}
+    </>
+  )
 }

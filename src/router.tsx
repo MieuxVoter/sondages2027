@@ -57,6 +57,12 @@ const grilleProfileMeriteRoute = createRoute({
   component: WebTimeMeritChart,
 })
 
+const ProfileMeriteCandidateRoute = createRoute({
+  getParentRoute: () => majoritaireRoute,
+  path: '/profile-merite-candidate',
+  component: WebTimeMeritChart,
+})
+
 const uninominalRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/uninominal',
@@ -82,6 +88,7 @@ const routeTree = rootRoute.addChildren([
     evolutionClassementRoute,
     profileMeriteSondageRoute,
     grilleProfileMeriteRoute,
+    ProfileMeriteCandidateRoute,
   ]),
   uninominalRoute,
   approbationRoute,

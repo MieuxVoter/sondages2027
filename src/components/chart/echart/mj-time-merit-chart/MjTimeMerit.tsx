@@ -3,7 +3,7 @@ import type { EChartsOption } from "echarts";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { graphColor } from "../../../../colors";
-import { selectCandidateInfo, selectCandidateOrderedByLatestRank, selectPt1Dates, selectPt1DatesForCandidate, selectTimeMeritChartSeriesByCandidateIdForECharts } from "../../../../store/jm-slice/jm-selector";
+import { selectCandidateInfo, selectCandidateOrderedByLatestRank, selectPt1DatesForCandidate, selectTimeMeritChartSeriesByCandidateIdForECharts } from "../../../../store/jm-slice/jm-selector";
 import type { RootState } from "../../../../store/store";
 import Chart from "../../../share/Chart";
 import { ChartTitle } from "../../../share/ChartTitle";
@@ -15,9 +15,9 @@ interface MjTimeMeritChartProps {
 }
 
 export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ isThumbnail = false }) => {
-    const [selectedCandidate, setSelectedCandidate] = useState<string>('FR')
-    const candidateInfo = useSelector((state: RootState) => selectCandidateInfo(state, selectedCandidate))
     const candidates = useSelector(selectCandidateOrderedByLatestRank)
+    const [selectedCandidate, setSelectedCandidate] = useState<string>(candidates[0]?.candidateId)
+    const candidateInfo = useSelector((state: RootState) => selectCandidateInfo(state, selectedCandidate))
     const timeMeritChartSerie = useSelector((state: RootState) => selectTimeMeritChartSeriesByCandidateIdForECharts(state, selectedCandidate));
     const pt1Dates = useSelector((state: RootState) => selectPt1DatesForCandidate(state, selectedCandidate) );
 
