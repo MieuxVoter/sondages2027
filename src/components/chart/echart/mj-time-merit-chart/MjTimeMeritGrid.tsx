@@ -26,12 +26,11 @@ export const MjTimeMeritGrid: React.FC<MjTimMeritGridProps> = ({ isThumbnail = f
                     overflow: 'auto',
                 }}>
                     <Box sx={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fill, 150px)',
-                        gridAutoRows: 'min-content',
+                        display: 'flex',
+                        flexWrap: 'wrap',
                         gap: 2,
                         p: 2,
-                        justifyContent: 'center',
+                        justifyContent: 'start',
                     }}>
                         {
                             candidates.map((candidate) => {
@@ -52,7 +51,15 @@ const MjTimeMeritGridCard: React.FC<{ candidateId: string }> = ({ candidateId })
     const candidate = candidates.find(c => c.candidateId === candidateId)
     const thumbnailSx = { height: "100px", width: "150px" };
     return (
-        <Card sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', p: 1 , height: "150px"}}>
+        <Card sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            p: 1,
+            height: "150px",
+            breakInside: 'avoid',
+            mb: 2
+        }}>
             <Thumbnail sx={thumbnailSx}>
                 <MjTimeMeritChart isThumbnail
                     candidateId={candidateId} />

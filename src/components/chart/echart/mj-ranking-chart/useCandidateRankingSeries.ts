@@ -11,6 +11,7 @@ export const useCandidateRankingSeries = () => {
       name: ranking.name,
       data: ranking.data,
       type: 'line' as const,
+      smooth: 0.3,
       lineStyle: {
         color: graphColor.candidateColor[ranking.name],
         width: 1.5
