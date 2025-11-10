@@ -11,12 +11,13 @@ import { BorderLayout } from "../../../share/layout/BorderLayout";
 import { timeMeritConfig } from "./timeMeritConfig";
 
 interface MjTimeMeritChartProps {
+    candidateId?: string
     isThumbnail?: boolean;
 }
 
-export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ isThumbnail = false }) => {
+export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ candidateId, isThumbnail = false }) => {
     const candidates = useSelector(selectCandidateOrderedByLatestRank)
-    const [selectedCandidate, setSelectedCandidate] = useState<string>(candidates[0]?.candidateId)
+    const [selectedCandidate, setSelectedCandidate] = useState<string>(candidateId ?? candidates[0]?.candidateId)
     const candidateInfo = useSelector((state: RootState) => selectCandidateInfo(state, selectedCandidate))
     const timeMeritChartSerie = useSelector((state: RootState) => selectTimeMeritChartSeriesByCandidateIdForECharts(state, selectedCandidate));
     const pt1Dates = useSelector((state: RootState) => selectPt1DatesForCandidate(state, selectedCandidate) );

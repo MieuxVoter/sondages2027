@@ -13,6 +13,7 @@ import { TestPlotly } from './components/chart/plotly/TestPlotly'
 import { WebTimeMeritChart } from './components/web/chart-page/WebTimeMeritChart'
 import { WebRankingChart } from './components/web/chart-page/WebRankingChart'
 import { WebMeritChart } from './components/web/chart-page/WebMeritChart'
+import { WebTimeMeritGrid } from './components/web/chart-page/WebTimeMeritGrid'
 
 const rootRoute = createRootRoute({
   component: App,
@@ -54,7 +55,7 @@ const profileMeriteSondageRoute = createRoute({
 const grilleProfileMeriteRoute = createRoute({
   getParentRoute: () => majoritaireRoute,
   path: '/grille-profile-merite',
-  component: WebTimeMeritChart,
+  component: WebTimeMeritGrid,
 })
 
 const ProfileMeriteCandidateRoute = createRoute({
