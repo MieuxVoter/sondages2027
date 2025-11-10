@@ -5,7 +5,7 @@ import type { RootState } from '../store';
 const selectJmData = (state: RootState) => state.majorityJudgment.jmData ;
 
 export const selectPt1Dates = createSelector(
-    [selectJmData],
+    [selectJmData], 
     (jmData): Array<{ date: string; index: number }> => {
         if (!jmData) {
             return [];
@@ -13,6 +13,23 @@ export const selectPt1Dates = createSelector(
 
         return jmData.polls
             .filter(poll => poll.poll_type_id === 'pt1')
+            .map(poll => poll.field_dates[1])
+            .filter((date): date is string => date !== undefined)
+            .sort((a, b) => new Date(b).getTime() - new Date(a).getTime())
+            .map((date, index) => ({ date, index }));
+    }
+);
+
+export const selectPt1DatesForCandidate = createSelector(
+    [selectJmData, (_state: RootState, candidateId: string) => candidateId],
+    (jmData, candidateId): Array<{ date: string; index: number }> => {
+        if (!jmData) {
+            return [];
+        }
+
+        return jmData.polls
+            .filter(poll => poll.poll_type_id === 'pt1')
+            .filter(poll => !candidateId || !!poll.results[candidateId])
             .map(poll => poll.field_dates[1])
             .filter((date): date is string => date !== undefined)
             .sort((a, b) => new Date(b).getTime() - new Date(a).getTime())
@@ -190,10 +207,15 @@ export const selectTimeMeritChartSeriesByCandidateIdForECharts = createSelector(
             return [];
         }
         const grades = jmData.poll_types.pt1.grades;
-        const sortedPolls = [...jmData.polls].reverse();
+        const sortedPolls = [...jmData.polls]
+            .filter(poll => !candidateId || !!poll.results[candidateId])
+            .reverse();
         return grades.map(grade => ({
             name: grade.label,
             data: sortedPolls.map(poll => {
+                if(!poll.results[candidateId]){
+                    console.log(poll.field_dates[1])
+                }
                 const distribution = poll.results[candidateId].distribution;
                 return distribution[grade.rank - 1];
             })
