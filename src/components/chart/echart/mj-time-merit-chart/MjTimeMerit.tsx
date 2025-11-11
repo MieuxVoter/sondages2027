@@ -2,6 +2,7 @@ import { Box, MenuItem, Select, Typography } from "@mui/material";
 import type { EChartsOption } from "echarts";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "@tanstack/react-router";
 import { graphColor } from "../../../../colors";
 import { selectCandidateInfo, selectCandidateOrderedByLatestRank, selectPt1DatesForCandidate, selectTimeMeritChartSeriesByCandidateIdForECharts } from "../../../../store/jm-slice/jm-selector";
 import type { RootState } from "../../../../store/store";
@@ -16,6 +17,7 @@ interface MjTimeMeritChartProps {
 }
 
 export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ candidateId, isThumbnail = false }) => {
+    const navigate = useNavigate()
     const candidates = useSelector(selectCandidateOrderedByLatestRank)
     const [selectedCandidate, setSelectedCandidate] = useState<string>(candidateId ?? candidates[0]?.candidateId)
     const candidateInfo = useSelector((state: RootState) => selectCandidateInfo(state, selectedCandidate))
@@ -72,8 +74,9 @@ export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ candidateId,
                                 id="candidate-select"
                                 value={selectedCandidate}
                                 onChange={(e) => {
-                                    console.log(e.target.value);
-                                    setSelectedCandidate(e.target.value);
+                                    const newCandidateId = e.target.value;
+                                    setSelectedCandidate(newCandidateId);
+                                    navigate({ to: '/majoritaire/profile-merite-candidate/$candidateId', params: { candidateId: newCandidateId } });
                                 }}
                             >
                                 {candidates?.map(({ candidateId, name}) => {

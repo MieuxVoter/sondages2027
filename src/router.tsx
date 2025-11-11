@@ -60,7 +60,7 @@ const grilleProfileMeriteRoute = createRoute({
 
 const ProfileMeriteCandidateRoute = createRoute({
   getParentRoute: () => majoritaireRoute,
-  path: '/profile-merite-candidate',
+  path: '/profile-merite-candidate/$candidateId',
   component: WebTimeMeritChart,
 })
 
