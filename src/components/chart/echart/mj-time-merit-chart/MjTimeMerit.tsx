@@ -1,4 +1,5 @@
-import { Box, MenuItem, Select, Typography } from "@mui/material";
+import { Box, IconButton, MenuItem, Select, Typography } from "@mui/material";
+import { Apps } from "@mui/icons-material";
 import type { EChartsOption } from "echarts";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -88,6 +89,13 @@ export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ candidateId,
                                 })
                                 }
                             </Select>
+                            <IconButton
+                                onClick={() => navigate({ to: '/majoritaire/grille-profile-merite' })}
+                                color="primary"
+                                size="small"
+                            >
+                                <Apps />
+                            </IconButton>
                         </Box>
                     }
                     <Box sx={{ width: 1, height: 1 }}>
