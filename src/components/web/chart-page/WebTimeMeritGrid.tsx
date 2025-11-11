@@ -1,5 +1,4 @@
-import { ArrowBack } from "@mui/icons-material"
-import { Box, Button, IconButton, Paper } from "@mui/material"
+import { Box, Button, Paper } from "@mui/material"
 import { useNavigate } from "@tanstack/react-router"
 import type { FC } from "react"
 import { useSelector } from "react-redux"
