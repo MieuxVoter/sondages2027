@@ -1,0 +1,1 @@
+.border-layout{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr) auto;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"north north north" "west center east" "south south south"}.north{grid-area:north}.west{grid-area:west}.center{grid-area:center}.east{grid-area:east}.south{grid-area:south}
