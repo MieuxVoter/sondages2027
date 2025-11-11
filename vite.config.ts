@@ -5,5 +5,5 @@ import svgr from 'vite-plugin-svgr'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), svgr()],
-  base: '/france-election-tracking-2027/',
+  base: '/sondages2027/',
 })
