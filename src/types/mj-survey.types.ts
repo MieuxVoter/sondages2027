@@ -37,7 +37,7 @@ export interface PollType {
   grades: Grade[];
 }
 
-export interface Survey {
+export interface MjSurvey {
   metadata: Metadata;
   poll_types: Record<string, PollType>;
   candidates: Record<string, Candidate>;

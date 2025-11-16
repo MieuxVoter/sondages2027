@@ -1,11 +1,11 @@
 import { createSelector } from '@reduxjs/toolkit';
-import type { CandidateRankings, EChartsSeriesData } from '../../types/survey.types';
+import type { CandidateRankings, EChartsSeriesData } from '../../types/mj-survey.types';
 import type { RootState } from '../store';
 
-const selectJmData = (state: RootState) => state.majorityJudgment.jmData ;
+const selectJmData = (state: RootState) => state.majorityJudgment.jmData;
 
 export const selectPt1Dates = createSelector(
-    [selectJmData], 
+    [selectJmData],
     (jmData): Array<{ date: string; index: number }> => {
         if (!jmData) {
             return [];
@@ -102,7 +102,7 @@ export const selectGradRankLimitsForEchart = createSelector(
                 gradeRank: grade.rank,
                 name: grade.label,
                 data: [
-                    ...gradeRankRange.map(([date, lowLimit, _highLimit]) => [date, lowLimit + 0.58]) ,
+                    ...gradeRankRange.map(([date, lowLimit, _highLimit]) => [date, lowLimit + 0.58]),
                     ...gradeRankRange.map(([date, _lowLimit, highLimit]) => [date, highLimit + 0.42]).reverse()
                 ],
             }
@@ -215,7 +215,7 @@ export const selectTimeMeritChartSeriesByCandidateIdForECharts = createSelector(
             name: grade.label,
             data: sortedPolls.map(poll => {
                 console.log(candidateId)
-                if(!poll.results[candidateId]){
+                if (!poll.results[candidateId]) {
                     console.log(poll.field_dates[1], candidateId)
 
                 }
@@ -235,29 +235,29 @@ export const selectLastPool = createSelector(
         return jmData.polls[0];
     }
 )
- 
+
 export const selectCandidateOrderedByLatestRank = createSelector(
     [selectJmData, selectLastPool],
     (jmData, lastPool) => {
-        if(!jmData || !lastPool) {
+        if (!jmData || !lastPool) {
             return [];
         }
         const result = Object.entries(jmData.candidates).map(([candidateId, candidate]) => ({
             candidateId,
             name: candidate.name,
         }))
-        .map(({ candidateId, name }) => {
-            return { candidateId, name, rank: lastPool.results[candidateId].rank };
-        })
-        .sort((a, b) => a.rank - b.rank);
+            .map(({ candidateId, name }) => {
+                return { candidateId, name, rank: lastPool.results[candidateId].rank };
+            })
+            .sort((a, b) => a.rank - b.rank);
         return result;
     }
 )
 
 export const selectCandidateInfo = createSelector(
     [selectJmData, (_state: RootState, candidateId: string) => candidateId], (jmData, candidateId) => {
-        if(!jmData){null}
+        if (!jmData) { null }
         return jmData?.candidates[candidateId];
     }
 )
-        
+
