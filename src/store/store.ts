@@ -2,6 +2,7 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { enableMapSet } from 'immer';
 import { mjSliceReducer } from './jm-slice/jm-slice';
+import { approvalSliceReducer } from './approval-slice/approval-slice';
 
 const initialState = {
     lang: "en",
@@ -29,7 +30,8 @@ enableMapSet();
 export const store = configureStore({
     reducer: {
         global: globalSlice.reducer,
-        majorityJudgment: mjSliceReducer
+        majorityJudgment: mjSliceReducer,
+        approval: approvalSliceReducer
     },
 });
 

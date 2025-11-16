@@ -1,6 +1,6 @@
 import type { Survey } from '../types/survey.types';
 
-// async function getLatestSurveyData() {
+// async function getLatestMjSurveyData() {
 //   // Utiliser l'API GitHub pour récupérer la dernière release
 //   const releaseResponse = await fetch(
 //     'https://api.github.com/repos/MieuxVoter/mj-tracker-2027/releases/latest'
@@ -25,7 +25,7 @@ import type { Survey } from '../types/survey.types';
 // }
 
 //Note: En attendant de régler les problèmes de CORS avec l'API GitHub, on utilise un proxy public.
-export async function getLatestSurveyData(): Promise<Survey> {
+export async function getLatestMjSurveyData(): Promise<Survey> {
   const proxyUrl = 'https://corsproxy.io/?';
   const jsonUrl = 'https://github.com/MieuxVoter/mj-tracker-2027/releases/download/latest-data/latest_survey_mj_compact.json';
   const jsonResponse = await fetch(proxyUrl + encodeURIComponent(jsonUrl));

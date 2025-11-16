@@ -5,22 +5,27 @@ import { useDispatch, useSelector } from 'react-redux'
 import type { AppDispatch, RootState } from '../store/store'
 import { useEffect } from 'react'
 import { loadMajorityJugmentData } from '../store/jm-slice/jm-slice'
+import { loadApprovalData } from '../store/approval-slice/approval-slice'
 
 export function App() {
   const dispatch = useDispatch<AppDispatch>()
   const jmData = useSelector((state: RootState) => state.majorityJudgment.jmData)
+  const approvalData = useSelector((state: RootState) => state.approval.jmData)
 
   useEffect(() => {
     // Ne charger que si les données ne sont pas déjà présentes
     if (!jmData) {
       dispatch(loadMajorityJugmentData())
     }
+    if (!approvalData) {
+      dispatch(loadApprovalData())
+    }
   }, [dispatch, jmData])
   const isMobile = useIsMobile()
   
   return (
     <>
-      {jmData && (isMobile ? <Mobile /> : <Web />)}
+      {jmData && approvalData && (isMobile ? <Mobile /> : <Web />)}
     </>
   )
 }
