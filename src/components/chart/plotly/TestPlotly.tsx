@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import Plot from "react-plotly.js";
-import rankingPlotData from '../../../data/plotly_ranking.json';
+import rankingPlotData from '../../../data/majority-judgment/plotly_ranking.json';
 import type { FC } from "react";
 import { Thumbnail } from "../../share/Thumbnail";
 

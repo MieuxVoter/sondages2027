@@ -25,9 +25,11 @@ export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = fa
   const rankingChartOption: EChartsOption = {
     ...rankingChartConfig,
     legend: isThumbnail ? { show: false } : rankingChartConfig.legend,
+    yAxis: {...rankingChartConfig.yAxis, max: candidateRankingsSeries.length},
     series
   }
 
+  console.log('candidate ranking : ', candidateRankingsSeries);
   if (!candidateRankingsSeries.length) {
     return <Box sx={{ p: 2 }}>Chargement des données...</Box>;
   }
@@ -40,7 +42,8 @@ export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = fa
             {!isThumbnail &&
             <ChartTitle
               title="Classement des candidats à l'éléction présidentiel 2027"
-              subtitle1={`source : IPSOS, commanditaire La Tribune Dimanche, dernier sondage: ${lastPollDate ? new Date(lastPollDate).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : 'N/A'}`}
+              subtitle1={`source : IPSOS, commanditaire La Tribune Dimanche, dernier sondage: 
+                ${lastPollDate ? new Date(lastPollDate).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : 'N/A'}`}
               subtitle2="scrutin : Jugement majoritaire "/>
             }
           </>
