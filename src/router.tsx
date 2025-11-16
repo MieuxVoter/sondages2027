@@ -14,6 +14,7 @@ import { WebTimeMeritChart } from './components/web/chart-page/WebTimeMeritChart
 import { WebRankingChart } from './components/web/chart-page/WebRankingChart'
 import { WebMeritChart } from './components/web/chart-page/WebMeritChart'
 import { WebTimeMeritGrid } from './components/web/chart-page/WebTimeMeritGrid'
+import { Approbation } from './components/Approbation'
 
 const rootRoute = createRootRoute({
   component: App,
@@ -73,7 +74,7 @@ const uninominalRoute = createRoute({
 const approbationRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/approbation',
-  component: Building,
+  component: Approbation,
 })
 
 const testPlotly = createRoute({

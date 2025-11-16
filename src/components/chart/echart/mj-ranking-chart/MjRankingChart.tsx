@@ -29,7 +29,6 @@ export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = fa
     series
   }
 
-  console.log('candidate ranking : ', candidateRankingsSeries);
   if (!candidateRankingsSeries.length) {
     return <Box sx={{ p: 2 }}>Chargement des données...</Box>;
   }

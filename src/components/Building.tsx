@@ -2,7 +2,7 @@
 export function Building() {
   return (
    <>
-      En construciton
+      En construction
    </> 
   )
 }
