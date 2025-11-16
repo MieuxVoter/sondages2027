@@ -9,8 +9,8 @@ import { loadApprovalData } from '../store/approval-slice/approval-slice'
 
 export function App() {
   const dispatch = useDispatch<AppDispatch>()
-  const jmData = useSelector((state: RootState) => state.majorityJudgment.jmData)
-  const approvalData = useSelector((state: RootState) => state.approval.jmData)
+  const jmData = useSelector((state: RootState) => state.majorityJudgment.survey)
+  const approvalData = useSelector((state: RootState) => state.approval.survey)
 
   useEffect(() => {
     // Ne charger que si les données ne sont pas déjà présentes

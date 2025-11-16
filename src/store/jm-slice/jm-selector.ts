@@ -2,7 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import type { CandidateRankings, EChartsSeriesData } from '../../types/mj-survey.types';
 import type { RootState } from '../store';
 
-const selectJmData = (state: RootState) => state.majorityJudgment.jmData;
+const selectJmData = (state: RootState) => state.majorityJudgment.survey;
 
 export const selectPt1Dates = createSelector(
     [selectJmData],

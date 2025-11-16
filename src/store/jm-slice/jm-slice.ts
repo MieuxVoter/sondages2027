@@ -3,11 +3,11 @@ import { getLatestMjSurveyData } from "../../services/MjServices";
 import type { MjSurvey } from "../../types/mj-survey.types";
 
 interface MjState {
-    jmData: MjSurvey | null;
+    survey: MjSurvey | null;
 }
 
 const mjInitialState: MjState = {
-    jmData: null,
+    survey: null,
 };
 
 const mjReducers = {
@@ -24,7 +24,7 @@ const mjSlice = createSlice({
 
 function handleLoadJmData(builder: any) {
     builder.addCase(loadMajorityJugmentData.fulfilled, (state: MjState, action: { payload: MjSurvey }) => {
-        state.jmData = action.payload;
+        state.survey = action.payload;
     });
 }
 

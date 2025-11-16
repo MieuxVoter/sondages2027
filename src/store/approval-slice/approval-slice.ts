@@ -2,12 +2,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getLatestApprovalSurveyData } from "../../services/ApprovalServices";
 import type { MjSurvey } from "../../types/mj-survey.types";
 
-interface MjState {
-    jmData: MjSurvey | null;
+interface ApprovalState {
+    survey: MjSurvey | null;
 }
 
-const approvalInitialState: MjState = {
-    jmData: null,
+const approvalInitialState: ApprovalState = {
+    survey: null,
 };
 
 const mjReducers = {
@@ -23,8 +23,8 @@ const approvalSlice = createSlice({
 });
 
 function handleLoadApprovalData(builder: any) {
-    builder.addCase(loadApprovalData.fulfilled, (state: MjState, action: { payload: MjSurvey }) => {
-        state.jmData = action.payload;
+    builder.addCase(loadApprovalData.fulfilled, (state: ApprovalState, action: { payload: MjSurvey }) => {
+        state.survey = action.payload;
     });
 }
 
