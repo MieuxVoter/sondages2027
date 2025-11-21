@@ -1,5 +1,5 @@
 import { useIsMobile } from '../hooks/useIsMobile'
-import { MobApprobation } from './mobile/MobApprobaaiton'
+import { MobApprobation } from './mobile/MobApprobation'
 import { WebApprobation } from './web/WebApprobation'
 
 export function Approbation() {
