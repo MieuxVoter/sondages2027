@@ -1,4 +1,4 @@
-import { Box, IconButton, MenuItem, Select, Typography } from "@mui/material";
+import { Box, IconButton, MenuItem, Select, Typography, useTheme } from "@mui/material";
 import { Apps } from "@mui/icons-material";
 import type { EChartsOption } from "echarts";
 import { useState } from "react";
@@ -19,11 +19,12 @@ interface MjTimeMeritChartProps {
 
 export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ candidateId, isThumbnail = false }) => {
     const navigate = useNavigate()
+    const theme = useTheme()
     const candidates = useSelector(selectCandidateOrderedByLatestRank)
     const [selectedCandidate, setSelectedCandidate] = useState<string>(candidateId ?? candidates[0]?.candidateId)
     const candidateInfo = useSelector((state: RootState) => selectCandidateInfo(state, selectedCandidate))
     const timeMeritChartSerie = useSelector((state: RootState) => selectTimeMeritChartSeriesByCandidateIdForECharts(state, selectedCandidate));
-    const pt1Dates = useSelector((state: RootState) => selectPt1DatesForCandidate(state, selectedCandidate) );
+    const pt1Dates = useSelector((state: RootState) => selectPt1DatesForCandidate(state, selectedCandidate));
 
     const timeMeritChartOption: EChartsOption = {
         ...timeMeritConfig,
@@ -32,8 +33,8 @@ export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ candidateId,
             data: pt1Dates.map(d => d.date).reverse(),
         },
         legend: isThumbnail ? { show: false } : timeMeritConfig.legend,
-        series: timeMeritChartSerie.map(({ name, data }: any, index: number) => (
-            {
+        series: timeMeritChartSerie.map(({ name, data }: any, index: number) => {
+            const baseSerie = {
                 name,
                 type: 'line' as const,
                 stack: 'total',
@@ -49,9 +50,33 @@ export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ candidateId,
                     focus: 'series' as const
                 },
                 data,
+            };
 
+            // Add 50% median line to first series only (not on thumbnails)
+            if (index === 0 && !isThumbnail) {
+                return {
+                    ...baseSerie,
+                    markLine: {
+                        symbol: 'none' as const,
+                        data: [{
+                            yAxis: 50,
+                            lineStyle: {
+                                color: theme.palette.primary.main,
+                                width: 2,
+                                type: 'dashed' as const
+                            },
+                            label: {
+                                show: true,
+                                position: 'end' as const,
+                                formatter: 'Médiane (50%)'
+                            }
+                        }],
+                        silent: true,
+                    }
+                };
             }
-        ))
+            return baseSerie;
+        })
             || [],
     }
 
@@ -80,7 +105,7 @@ export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ candidateId,
                                     navigate({ to: '/majoritaire/profile-merite-candidate/$candidateId', params: { candidateId: newCandidateId } });
                                 }}
                             >
-                                {candidates?.map(({ candidateId, name}) => {
+                                {candidates?.map(({ candidateId, name }) => {
                                     return (
                                         <MenuItem key={candidateId} value={candidateId}>
                                             {name}
