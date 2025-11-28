@@ -12,15 +12,15 @@ export const rankingChartConfig = {
             return `${marker}${seriesName}<br/>${date} : ${rankText}`
         }
     },
-    legend: {
-        data: [
-            "ni satisfait ni insatisfait",
-            "plutôt insatisfait",
-            "très insatisfait"
-        ],
-        bottom: 0,
-        orient: "horizontal" as const
-    },
+    // legend: {
+    //     data: [
+    //         "ni satisfait ni insatisfait",
+    //         "plutôt insatisfait",
+    //         "très insatisfait"
+    //     ],
+    //     bottom: 0,
+    //     orient: "horizontal" as const
+    // },
     grid: {
         left: "3%",
         right: 145,

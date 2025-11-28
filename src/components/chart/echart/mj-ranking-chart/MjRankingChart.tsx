@@ -6,7 +6,6 @@ import { selectLastPt1Date } from '../../../../store/jm-slice/jm-selector';
 import { BorderLayout } from '../../../share/layout/BorderLayout';
 import { rankingChartConfig } from './rankingChartConfig';
 import { useCandidateRankingSeries } from './useCandidateRankingSeries';
-import { useGradeAreaSeries } from './useGradeAreaSeries';
 import Chart from '../../../share/Chart';
 import { ChartTitle } from '../../../share/ChartTitle';
 
@@ -18,7 +17,7 @@ export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = fa
   const [selectedCandidates, setSelectedCandidates] = useState<Set<string>>(new Set());
 
   const candidateRankingsSeries = useCandidateRankingSeries(selectedCandidates);
-  const gradeAreaSeries = useGradeAreaSeries();
+  // const gradeAreaSeries = useGradeAreaSeries();
   const lastPollDate = useSelector(selectLastPt1Date);
 
  //const series = [...gradeAreaSeries, ...candidateRankingsSeries];
@@ -45,7 +44,8 @@ export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = fa
 
   const rankingChartOption: EChartsOption = {
     ...rankingChartConfig,
-    legend: isThumbnail ? { show: false } : rankingChartConfig.legend,
+    // legend: isThumbnail ? { show: false } : rankingChartConfig.legend,
+    legend: { show: false },
     yAxis: {...rankingChartConfig.yAxis, max: candidateRankingsSeries.length},
     series
   }
