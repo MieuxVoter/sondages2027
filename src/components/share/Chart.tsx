@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 
@@ -17,8 +17,10 @@ const Chart: React.FC<ChartProps> = ({
   style = DEFAULT_STYLE,
   className,
   theme,
-  onEvents
+  onEvents,
 }) => {
+  const chartRef = useRef<ReactECharts>(null);
+
   const optionWithNoAnimation = {
     ...option,
     animation: false
@@ -26,6 +28,7 @@ const Chart: React.FC<ChartProps> = ({
 
   return (
     <ReactECharts
+      ref={chartRef}
       option={optionWithNoAnimation}
       style={style}
       className={className}

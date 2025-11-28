@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import type { EChartsOption } from 'echarts';
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectLastPt1Date } from '../../../../store/jm-slice/jm-selector';
 import { BorderLayout } from '../../../share/layout/BorderLayout';
@@ -17,23 +17,12 @@ interface MjRankingChartProps {
 export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = false }) => {
   const [selectedCandidates, setSelectedCandidates] = useState<Set<string>>(new Set());
 
-  const candidateRankingsSeries = useCandidateRankingSeries();
+  const candidateRankingsSeries = useCandidateRankingSeries(selectedCandidates);
   const gradeAreaSeries = useGradeAreaSeries();
   const lastPollDate = useSelector(selectLastPt1Date);
 
-  // Ajuster l'épaisseur des lignes en fonction de la sélection
-  const adjustedCandidateSeries = useMemo(() => {
-    return candidateRankingsSeries.map(series => ({
-      ...series,
-      lineStyle: {
-        ...series.lineStyle,
-        width: selectedCandidates.has(series.name) ? 4 : 1.5
-      }
-    }));
-  }, [candidateRankingsSeries, selectedCandidates]);
-
-  const series = [...gradeAreaSeries, ...adjustedCandidateSeries];
-  //const series = [ ...adjustedCandidateSeries];
+ //const series = [...gradeAreaSeries, ...candidateRankingsSeries];
+ const series = [...candidateRankingsSeries];
 
   const handleChartClick = (params: any) => {
     if (params.componentType === 'series' && params.seriesType === 'line') {

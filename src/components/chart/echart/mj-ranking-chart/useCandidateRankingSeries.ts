@@ -3,42 +3,50 @@ import { useSelector } from 'react-redux';
 import { graphColor } from '../../../../colors';
 import { selectCandidateRankingsForECharts } from '../../../../store/jm-slice/jm-selector';
 
-export const useCandidateRankingSeries = () => {
+export const useCandidateRankingSeries = (selectedCandidates?: Set<string>) => {
   const candidateRankings = useSelector(selectCandidateRankingsForECharts);
 
   const candidateRankingsSeries = useMemo(() => {
-    return candidateRankings?.map(ranking => ({
-      name: ranking.name,
-      data: ranking.data,
-      type: 'line' as const,
-      smooth: 0.3,
-      symbolSize: 1,
-      showSymbol: true,
-      triggerLineEvent: true,
-      lineStyle: {
-        color: graphColor.candidateColor[ranking.name],
-        width: 1.5
-      },
-      itemStyle: {
-        color: graphColor.candidateColor[ranking.name]
-      },
-      emphasis: {
+    const hasSelection = selectedCandidates && selectedCandidates.size > 0;
+
+    return candidateRankings?.map(ranking => {
+      const isSelected = selectedCandidates?.has(ranking.name) ?? false;
+      const shouldGray = hasSelection && !isSelected;
+
+      return {
+        name: ranking.name,
+        data: ranking.data,
+        type: 'line' as const,
+        smooth: 0.3,
+        symbolSize: isSelected ? 6 : 0,
+        showSymbol: isSelected,
+        triggerLineEvent: true,
         lineStyle: {
-          width: 4
-        }
-      },
-      endLabel: {
-        show: true,
-        formatter: (params: any) => {
-          const rank = Math.round(params.value[1]);
-          const rankText = rank === 1 ? '1er ' : `${rank}e`.padEnd(4, ' ');
-          return `${rankText} ${params.seriesName}`;
+          color: shouldGray ? '#cccccc' : graphColor.candidateColor[ranking.name],
+          width: isSelected ? 4 : 1.5
         },
-        distance: 15,
-        color: graphColor.candidateColor[ranking.name],
-      }
-    })) || [];
-  }, [candidateRankings]);
+        itemStyle: {
+          color: shouldGray ? '#cccccc' : graphColor.candidateColor[ranking.name]
+        },
+        emphasis: {
+          lineStyle: {
+            width: 4,
+            color: graphColor.candidateColor[ranking.name]
+          }
+        },
+        endLabel: {
+          show: true,
+          formatter: (params: any) => {
+            const rank = Math.round(params.value[1]);
+            const rankText = rank === 1 ? '1er ' : `${rank}e`.padEnd(4, ' ');
+            return `${rankText} ${params.seriesName}`;
+          },
+          distance: 15,
+          color: isSelected ? graphColor.candidateColor[ranking.name]: '#666666',
+        }
+      };
+    }) || [];
+  }, [candidateRankings, selectedCandidates]);
 
   return candidateRankingsSeries;
 };
