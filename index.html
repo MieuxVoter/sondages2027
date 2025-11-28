@@ -23,10 +23,23 @@
         box-sizing: border-box;
       }
 
-      html, body, #root {
-        height: 100vh;
-        width: 100vw;
+      html, body {
+        height: 100%;
+        width: 100%;
         overflow: hidden;
+      }
+
+      #root {
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+      }
+
+      /* Fix pour mobile - utilise dvh (dynamic viewport height) si disponible */
+      @supports (height: 100dvh) {
+        html, body {
+          height: 100dvh;
+        }
       }
     </style>
   </head>
