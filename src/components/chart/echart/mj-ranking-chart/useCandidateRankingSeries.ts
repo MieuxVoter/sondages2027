@@ -12,12 +12,20 @@ export const useCandidateRankingSeries = () => {
       data: ranking.data,
       type: 'line' as const,
       smooth: 0.3,
+      symbolSize: 1,
+      showSymbol: true,
+      triggerLineEvent: true,
       lineStyle: {
         color: graphColor.candidateColor[ranking.name],
         width: 1.5
       },
       itemStyle: {
         color: graphColor.candidateColor[ranking.name]
+      },
+      emphasis: {
+        lineStyle: {
+          width: 4
+        }
       },
       endLabel: {
         show: true,

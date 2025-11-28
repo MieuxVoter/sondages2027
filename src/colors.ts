@@ -45,7 +45,7 @@ const candidateColor: Record<string, string> = {
 
 export const graphColor = {
     fiveGradeScale: fiveGradeScaleBase,
-    rankingFiveGradeScale: fiveGradeScaleBase.map(color => alpha(color, 0.5)),
+    rankingFiveGradeScale: fiveGradeScaleBase.map(color => alpha(color, 0.2)),
     candidateColor : candidateColor
 }
 

@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import type { EChartsOption } from 'echarts';
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectLastPt1Date } from '../../../../store/jm-slice/jm-selector';
 import { BorderLayout } from '../../../share/layout/BorderLayout';
@@ -15,12 +15,44 @@ interface MjRankingChartProps {
 }
 
 export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = false }) => {
+  const [selectedCandidates, setSelectedCandidates] = useState<Set<string>>(new Set());
 
   const candidateRankingsSeries = useCandidateRankingSeries();
   const gradeAreaSeries = useGradeAreaSeries();
   const lastPollDate = useSelector(selectLastPt1Date);
 
-  const series = [...gradeAreaSeries, ...candidateRankingsSeries,];
+  // Ajuster l'épaisseur des lignes en fonction de la sélection
+  const adjustedCandidateSeries = useMemo(() => {
+    return candidateRankingsSeries.map(series => ({
+      ...series,
+      lineStyle: {
+        ...series.lineStyle,
+        width: selectedCandidates.has(series.name) ? 4 : 1.5
+      }
+    }));
+  }, [candidateRankingsSeries, selectedCandidates]);
+
+  const series = [...gradeAreaSeries, ...adjustedCandidateSeries];
+  //const series = [ ...adjustedCandidateSeries];
+
+  const handleChartClick = (params: any) => {
+    if (params.componentType === 'series' && params.seriesType === 'line') {
+      const candidateName = params.seriesName;
+      setSelectedCandidates(prev => {
+        const newSet = new Set(prev);
+        if (newSet.has(candidateName)) {
+          newSet.delete(candidateName);
+        } else {
+          newSet.add(candidateName);
+        }
+        return newSet;
+      });
+    }
+  }
+
+  const chartEvents = {
+    click: handleChartClick
+  };
 
   const rankingChartOption: EChartsOption = {
     ...rankingChartConfig,
@@ -32,6 +64,7 @@ export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = fa
   if (!candidateRankingsSeries.length) {
     return <Box sx={{ p: 2 }}>Chargement des données...</Box>;
   }
+
 
   return (
     <Box sx={{ width: 1, height: 1 }}>
@@ -47,7 +80,7 @@ export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = fa
             }
           </>
         }
-        center={<Chart option={rankingChartOption} />}
+        center={<Chart option={rankingChartOption} onEvents={chartEvents} />}
       />
     </Box>
   )

@@ -44,7 +44,7 @@ export const rankingChartConfig = {
             show: false
         },
         splitLine: {
-            show: true,
+            show: false,
             lineStyle: {
                 color: "#e0e0e0",
                 type: "dashed" as const
