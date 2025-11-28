@@ -1,0 +1,15 @@
+.mv-footer {
+    border-top: 1px solid var(--mv-border);
+    background: var(--mv-bg);
+    margin-top: auto;
+}
+
+.mv-footer__inner {
+    padding: 18px 24px;
+}
+
+.mv-footer__text {
+    margin: 0;
+    color: var(--mv-muted);
+    font-size: 14px;
+}

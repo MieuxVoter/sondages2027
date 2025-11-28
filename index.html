@@ -1,50 +1,61 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo-mini.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>France Election Tracking 2027</title>
-    <script>
-      // Single Page Apps for GitHub Pages
-      // Restore the URL from sessionStorage if redirected from 404.html
-      (function() {
-        const redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        if (redirect && redirect !== location.href) {
-          history.replaceState(null, null, redirect.split('#')[0]);
-        }
-      })();
-    </script>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
 
-      html, body {
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/logo-mini.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sondages2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=DM+Serif+Display:ital@0;1&display=swap"
+    rel="stylesheet">
+  <script>
+    // Single Page Apps for GitHub Pages
+    // Restore the URL from sessionStorage if redirected from 404.html
+    (function () {
+      const redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect !== location.href) {
+        history.replaceState(null, null, redirect.split('#')[0]);
       }
+    })();
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      #root {
-        height: 100%;
-        width: 100%;
-        overflow: auto;
-      }
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
 
-      /* Fix pour mobile - utilise dvh (dynamic viewport height) si disponible */
-      @supports (height: 100dvh) {
-        html, body {
-          height: 100dvh;
-        }
+    #root {
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+    }
+
+    /* Fix pour mobile - utilise dvh (dynamic viewport height) si disponible */
+    @supports (height: 100dvh) {
+
+      html,
+      body {
+        height: 100dvh;
       }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

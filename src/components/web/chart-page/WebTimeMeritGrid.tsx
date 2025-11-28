@@ -5,7 +5,7 @@ import { useSelector } from "react-redux"
 import { selectCandidateOrderedByLatestRank } from "../../../store/jm-slice/jm-selector"
 import { MjTimeMeritChart } from "../../chart/echart/mj-time-merit-chart/MjTimeMerit"
 import { ChartTitle } from "../../share/ChartTitle"
-import { BorderLayout } from "../../share/layout/BorderLayout"
+
 import { Thumbnail } from "../../share/Thumbnail"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
@@ -15,36 +15,31 @@ export const WebTimeMeritGrid: FC = () => {
 
     return (
         <Box sx={{ width: 1, height: 1, pt: 1, position: 'relative' }}>
-            <Box sx={{ width: 1, height: 1, overflow: 'auto', p: 4 }}>
-                <BorderLayout
-                    north={
-                        <ChartTitle
-                            title="Grille de profile de mérite"
-                            subtitle1="Evolution du profile de mérite d'un candidat au cours du temps"
-                        />
-                    }
-                    center={
-                        <Box sx={{
-                            height: 1,
-                        }}>
-                            <Box sx={{
-                                display: 'flex',
-                                flexWrap: 'wrap',
-                                gap: 2,
-                                p: 2,
-                                justifyContent: 'start',
-                            }}>
-                                {
-                                    candidates.map((candidate) => {
-                                        return (
-                                            <MjTimeMeritGridCard key={candidate.candidateId} candidateId={candidate.candidateId} />
-                                        )
-                                    })
-                                }
-                            </Box>
-                        </Box>
-                    }
+            <Box sx={{ width: 1, height: 1, overflow: 'auto', p: 4, display: 'flex', flexDirection: 'column' }}>
+                <ChartTitle
+                    title="Grille de profile de mérite"
+                    subtitle1="Evolution du profile de mérite d'un candidat au cours du temps"
                 />
+                <Box sx={{
+                    height: 1,
+                    flexGrow: 1
+                }}>
+                    <Box sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: 2,
+                        p: 2,
+                        justifyContent: 'start',
+                    }}>
+                        {
+                            candidates.map((candidate) => {
+                                return (
+                                    <MjTimeMeritGridCard key={candidate.candidateId} candidateId={candidate.candidateId} />
+                                )
+                            })
+                        }
+                    </Box>
+                </Box>
             </Box>
             <Button
                 onClick={() => navigate({ to: '/majoritaire' })}

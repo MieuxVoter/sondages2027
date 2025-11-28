@@ -7,15 +7,17 @@ import { selectCandidateDistributionByPollIndex, selectMeritChartSeriesByPollInd
 import type { RootState } from "../../../../store/store";
 import Chart from "../../../share/Chart";
 import { ChartTitle } from "../../../share/ChartTitle";
-import { BorderLayout } from "../../../share/layout/BorderLayout";
+
 import { mjMeritChartConfig } from "./meritChatConfig";
 
 interface MjMeritChartProps {
   isThumbnail?: boolean;
+  height?: number | string;
 }
 
 export const MjMeritChart: React.FC<MjMeritChartProps> = ({
-  isThumbnail = false
+  isThumbnail = false,
+  height
 }) => {
   const theme = useTheme();
   const [pollIndex, setPollIndex] = useState(0);
@@ -69,46 +71,40 @@ export const MjMeritChart: React.FC<MjMeritChartProps> = ({
   }
 
   return (<>
-    <BorderLayout
-      north={!isThumbnail &&
+    <Box sx={{ width: 1, height: 1, display: 'flex', flexDirection: 'column' }}>
+      {!isThumbnail &&
         <ChartTitle
           title="Profide de mérite - sondage unique"
           subtitle1={`Comparaison du profile de mérite des différents candidats pour un sondage donné au scrutin majoritaire`}
         />}
-      center={
-        <Box sx={{ width: 1, height: 1, display: 'flex', flexDirection: 'column' }}>
-          {
-            !isThumbnail && 
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "start", gap: 2 }}>
-                <Typography color="text.secondary">Date du sondage :</Typography>
-                <Select
-                  size="small"
-                  labelId="poll-select-label"
-                  id="poll-select"
-                  value={pollIndex}
-                  onChange={(e) => setPollIndex(e.target.value)}
-                >
-                  {pt1Dates.map((dateObj) => (
-                    <MenuItem key={dateObj.index} value={dateObj.index}>
-                      {new Date(dateObj.date).toLocaleDateString('fr-FR', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric'
-                      })}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </Box>
-          }
-          <Box sx={{ flex: 1 }}>
-            <Chart option={meritChartOption} />
+      <Box sx={{ width: 1, flexGrow: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+        {
+          !isThumbnail &&
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "start", gap: 2 }}>
+            <Typography color="text.secondary">Date du sondage :</Typography>
+            <Select
+              size="small"
+              labelId="poll-select-label"
+              id="poll-select"
+              value={pollIndex}
+              onChange={(e) => setPollIndex(e.target.value)}
+            >
+              {pt1Dates.map((dateObj) => (
+                <MenuItem key={dateObj.index} value={dateObj.index}>
+                  {new Date(dateObj.date).toLocaleDateString('fr-FR', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                  })}
+                </MenuItem>
+              ))}
+            </Select>
           </Box>
+        }
+        <Box sx={{ flex: height ? 'none' : 1, height: height || '100%', minHeight: 0 }}>
+          <Chart option={meritChartOption} />
         </Box>
-      }
-    >
-    </BorderLayout>
-  </>
-
-
-  )
+      </Box>
+    </Box>
+  </>)
 }

@@ -5,7 +5,7 @@ import { WebJmChart } from "./WebJmChart"
 export const WebRankingChart: FC = () => {
     return (
         <WebJmChart>
-            <MjRankingChart />
+            <MjRankingChart height="600px" />
         </WebJmChart>
     )
 }

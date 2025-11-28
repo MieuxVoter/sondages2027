@@ -9,15 +9,16 @@ import { selectCandidateInfo, selectCandidateOrderedByLatestRank, selectPt1Dates
 import type { RootState } from "../../../../store/store";
 import Chart from "../../../share/Chart";
 import { ChartTitle } from "../../../share/ChartTitle";
-import { BorderLayout } from "../../../share/layout/BorderLayout";
+
 import { timeMeritConfig } from "./timeMeritConfig";
 
 interface MjTimeMeritChartProps {
     candidateId?: string
     isThumbnail?: boolean;
+    height?: number | string;
 }
 
-export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ candidateId, isThumbnail = false }) => {
+export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ candidateId, isThumbnail = false, height }) => {
     const navigate = useNavigate()
     const theme = useTheme()
     const candidates = useSelector(selectCandidateOrderedByLatestRank)
@@ -81,54 +82,51 @@ export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ candidateId,
     }
 
     return (
-        <BorderLayout
-            north={!isThumbnail &&
+        <Box sx={{ width: 1, height: 1, display: 'flex', flexDirection: 'column' }}>
+            {!isThumbnail &&
                 <ChartTitle
                     title={`Évolution des mentions pour ${candidateInfo?.name}`}
                     subtitle1="Source : IPSOS - La Tribune Dimanche"
                 />
             }
-            center={
-                <Box sx={{ width: 1, height: 1, display: 'flex', flexDirection: 'column' }}>
-                    {
-                        !isThumbnail &&
-                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'start', gap: 2 }}>
-                            <Typography color="text.secondary"> Candidat :</Typography>
-                            <Select
-                                size="small"
-                                labelId="candidate-select-label"
-                                id="candidate-select"
-                                value={selectedCandidate}
-                                onChange={(e) => {
-                                    const newCandidateId = e.target.value;
-                                    setSelectedCandidate(newCandidateId);
-                                    navigate({ to: '/majoritaire/profile-merite-candidate/$candidateId', params: { candidateId: newCandidateId } });
-                                }}
-                            >
-                                {candidates?.map(({ candidateId, name }) => {
-                                    return (
-                                        <MenuItem key={candidateId} value={candidateId}>
-                                            {name}
-                                        </MenuItem>
-                                    )
-                                })
-                                }
-                            </Select>
-                            <IconButton
-                                onClick={() => navigate({ to: '/majoritaire/grille-profile-merite' })}
-                                color="primary"
-                                size="small"
-                            >
-                                <Apps />
-                            </IconButton>
-                        </Box>
-                    }
-                    <Box sx={{ width: 1, height: 1 }}>
-                        <Chart option={timeMeritChartOption} />
+            <Box sx={{ width: 1, flexGrow: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+                {
+                    !isThumbnail &&
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'start', gap: 2 }}>
+                        <Typography color="text.secondary"> Candidat :</Typography>
+                        <Select
+                            size="small"
+                            labelId="candidate-select-label"
+                            id="candidate-select"
+                            value={selectedCandidate}
+                            onChange={(e) => {
+                                const newCandidateId = e.target.value;
+                                setSelectedCandidate(newCandidateId);
+                                navigate({ to: '/majoritaire/profile-merite-candidate/$candidateId', params: { candidateId: newCandidateId } });
+                            }}
+                        >
+                            {candidates?.map(({ candidateId, name }) => {
+                                return (
+                                    <MenuItem key={candidateId} value={candidateId}>
+                                        {name}
+                                    </MenuItem>
+                                )
+                            })
+                            }
+                        </Select>
+                        <IconButton
+                            onClick={() => navigate({ to: '/majoritaire/grille-profile-merite' })}
+                            color="primary"
+                            size="small"
+                        >
+                            <Apps />
+                        </IconButton>
                     </Box>
+                }
+                <Box sx={{ width: 1, flex: height ? 'none' : 1, height: height || '100%', minHeight: 0 }}>
+                    <Chart option={timeMeritChartOption} />
                 </Box>
-
-            }
-        />
+            </Box>
+        </Box>
     )
 }

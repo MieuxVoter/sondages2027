@@ -8,7 +8,7 @@ export const WebTimeMeritChart: FC = () => {
 
     return (
         <WebJmChart>
-            <MjTimeMeritChart candidateId={candidateId} />
+            <MjTimeMeritChart candidateId={candidateId} height="600px" />
         </WebJmChart>
     )
 }

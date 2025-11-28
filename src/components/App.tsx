@@ -1,11 +1,10 @@
-import { useIsMobile } from '../hooks/useIsMobile'
-import { Web } from './web/Web'
-import { Mobile } from './mobile/Mobile'
 import { useDispatch, useSelector } from 'react-redux'
 import type { AppDispatch, RootState } from '../store/store'
 import { useEffect } from 'react'
 import { loadMajorityJugmentData } from '../store/jm-slice/jm-slice'
 import { loadApprovalData } from '../store/approval-slice/approval-slice'
+import { Layout } from './share/layout/Layout'
+import { Outlet } from '@tanstack/react-router'
 
 export function App() {
   const dispatch = useDispatch<AppDispatch>()
@@ -21,11 +20,10 @@ export function App() {
       dispatch(loadApprovalData())
     }
   }, [dispatch, jmData])
-  const isMobile = useIsMobile()
-  
+
   return (
-    <>
-      {jmData && approvalData && (isMobile ? <Mobile /> : <Web />)}
-    </>
+    <Layout>
+      {jmData && approvalData && <Outlet />}
+    </Layout>
   )
 }
