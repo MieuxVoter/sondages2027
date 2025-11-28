@@ -1,45 +1,35 @@
-import { alpha, Box, Card, CardContent, Typography, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
+import { useNavigate } from "@tanstack/react-router";
+import { MjMeritChart } from "../chart/echart/mj-merit-chart/MjMeritChart";
 import { MjRankingChart } from "../chart/echart/mj-ranking-chart/MjRankingChart";
-import { Thumbnail } from "../share/Thumbnail";
+import { ChartCard } from "../share/ChartCard";
+import { MjTimeMeritChart } from "../chart/echart/mj-time-merit-chart/MjTimeMerit";
 
 export const MobMajoritaire: React.FC = () => {
-    const theme = useTheme();
-    const thumbnailSx = { height: "200px", width: 1, bgcolor: alpha(theme.palette.info.main, 0.07) };
+    const navigate = useNavigate();
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: 2, p: 2 }}>
-            <Card elevation={2} sx={{ width: 1 }}>
-                <Thumbnail sx={thumbnailSx}>
-                    <MjRankingChart />
-                </Thumbnail>
-                <CardContent>
-                    <Typography variant="h6">Evolution du Classement</Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        Evolution du classement des candidats sondage après sondage
-                    </Typography>
-                </CardContent>
-            </Card>
-            <Card elevation={2} sx={{ width: 1 }}>
-                <Thumbnail sx={thumbnailSx}>
-                    <MjRankingChart />
-                </Thumbnail>
-                <CardContent>
-                    <Typography variant="h6">Profile de mérite - sondage unique</Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        Comparaison du profile de mérite des différents candidats pour un sondage donné
-                    </Typography>
-                </CardContent>
-            </Card>
-            <Card elevation={2} sx={{ width: 1 }}>
-                <Thumbnail sx={thumbnailSx}>
-                    <MjRankingChart />
-                </Thumbnail>
-                <CardContent>
-                    <Typography variant="h6">Grille de profile de mérite</Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        Evolution du profile de mérite d'un candidat au cours du temps
-                    </Typography>
-                </CardContent>
-            </Card>
+            <ChartCard 
+                title="Evolution du Classement"
+                description="Evolution du classement des candidats sondage après sondage"
+                chart={<MjRankingChart isThumbnail />}
+                onClick={() => navigate({ to: '/majoritaire/evolution-classement' })}
+                sx={{ flex: 1, width: 1 }}
+            />
+            <ChartCard
+                title="Profile de mérite - sondage unique"
+                description="Comparaison du profile de mérite des différents candidats pour un sondage donné"
+                chart={<MjMeritChart isThumbnail />}
+                onClick={() => navigate({ to: '/majoritaire/profile-merite-sondage' })}
+                sx={{ flex: 1, width: 1 }}
+            />
+            <ChartCard
+                title="Grille de profile de mérite"
+                description="Evolution du profile de mérite d'un candidat au cours du temps"
+                chart={<MjTimeMeritChart isThumbnail />}
+                onClick={() => navigate({ to: '/majoritaire/grille-profile-merite' })}
+                sx={{ flex: 1, width: 1 }}
+            />
         </Box>
     )
 }

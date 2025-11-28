@@ -1,9 +1,12 @@
-export interface Metadata {
-  generated_at: string;
-  source: string;
-  voting_method: string;
-  version: string;
+import type { Metadata } from "./common-survey.type";
+
+export interface MjSurvey {
+  metadata: Metadata;
+  poll_types: Record<string, PollType>;
+  candidates: Record<string, Candidate>;
+  polls: Poll[];
 }
+
 
 export interface Candidate {
   name: string;
@@ -37,12 +40,7 @@ export interface PollType {
   grades: Grade[];
 }
 
-export interface MjSurvey {
-  metadata: Metadata;
-  poll_types: Record<string, PollType>;
-  candidates: Record<string, Candidate>;
-  polls: Poll[];
-}
+
 
 export interface Grade {
   rank: number;

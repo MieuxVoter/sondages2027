@@ -203,7 +203,6 @@ export const selectMeritChartSeriesByPollIndexForECharts = createSelector(
 export const selectTimeMeritChartSeriesByCandidateIdForECharts = createSelector(
     [selectJmData, (_state: RootState, candidateId: string) => candidateId],
     (jmData, candidateId) => {
-        console.log('candidate', candidateId)
         if (!jmData) {
             return [];
         }
@@ -214,11 +213,6 @@ export const selectTimeMeritChartSeriesByCandidateIdForECharts = createSelector(
         return grades.map(grade => ({
             name: grade.label,
             data: sortedPolls.map(poll => {
-                console.log(candidateId)
-                if (!poll.results[candidateId]) {
-                    console.log(poll.field_dates[1], candidateId)
-
-                }
                 const distribution = poll.results[candidateId].distribution;
                 return distribution[grade.rank - 1];
             })
