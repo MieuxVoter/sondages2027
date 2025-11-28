@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2025-11-09T03:42:35.346183",
+    "generated_at": "2025-11-16T03:46:49.854142",
     "source": "mj2027.csv",
     "voting_method": "majority_judgment",
     "version": "1.0"
@@ -197,9 +197,449 @@
       "party": "La France Insoumise",
       "announced": null,
       "withdrawn": null
+    },
+    "SK": {
+      "name": "Sarah Knafo",
+      "party": "",
+      "announced": null,
+      "withdrawn": null
     }
   },
   "polls": [
+    {
+      "id": "ipsos_202511",
+      "poll_type_id": "pt1",
+      "organization": "IPSOS",
+      "client": "La Tribune Dimanche",
+      "field_dates": [
+        "2025-11-06",
+        "2025-11-07"
+      ],
+      "sample_size": 1000,
+      "population": "all",
+      "results": {
+        "EP": {
+          "distribution": [
+            4.08,
+            20.41,
+            27.55,
+            20.41,
+            27.55
+          ],
+          "no_opinion": 2.0,
+          "rank": 4,
+          "median_grade": 3,
+          "before_median": 24.49,
+          "after_median": 47.96,
+          "majority_tie_break": "rejet"
+        },
+        "JB": {
+          "distribution": [
+            21.43,
+            16.33,
+            15.31,
+            8.16,
+            38.78
+          ],
+          "no_opinion": 2.0,
+          "rank": 2,
+          "median_grade": 3,
+          "before_median": 37.76,
+          "after_median": 46.94,
+          "majority_tie_break": "rejet"
+        },
+        "MLP": {
+          "distribution": [
+            17.35,
+            16.33,
+            16.33,
+            9.18,
+            40.82
+          ],
+          "no_opinion": 2.0,
+          "rank": 8,
+          "median_grade": 3,
+          "before_median": 33.67,
+          "after_median": 50.0,
+          "majority_tie_break": "rejet"
+        },
+        "RG": {
+          "distribution": [
+            4.12,
+            11.34,
+            36.08,
+            21.65,
+            26.8
+          ],
+          "no_opinion": 3.0,
+          "rank": 5,
+          "median_grade": 3,
+          "before_median": 15.46,
+          "after_median": 48.45,
+          "majority_tie_break": "rejet"
+        },
+        "FH": {
+          "distribution": [
+            4.08,
+            13.27,
+            23.47,
+            25.51,
+            33.67
+          ],
+          "no_opinion": 2.0,
+          "rank": 23,
+          "median_grade": 4,
+          "before_median": 40.82,
+          "after_median": 33.67,
+          "majority_tie_break": "approbation"
+        },
+        "FR": {
+          "distribution": [
+            5.15,
+            10.31,
+            32.99,
+            24.74,
+            26.8
+          ],
+          "no_opinion": 3.0,
+          "rank": 13,
+          "median_grade": 4,
+          "before_median": 48.45,
+          "after_median": 26.8,
+          "majority_tie_break": "approbation"
+        },
+        "FRo": {
+          "distribution": [
+            3.09,
+            12.37,
+            32.99,
+            23.71,
+            27.84
+          ],
+          "no_opinion": 3.0,
+          "rank": 12,
+          "median_grade": 4,
+          "before_median": 48.45,
+          "after_median": 27.84,
+          "majority_tie_break": "approbation"
+        },
+        "GD": {
+          "distribution": [
+            4.12,
+            18.56,
+            30.93,
+            18.56,
+            27.84
+          ],
+          "no_opinion": 3.0,
+          "rank": 1,
+          "median_grade": 3,
+          "before_median": 22.68,
+          "after_median": 46.39,
+          "majority_tie_break": "rejet"
+        },
+        "BLM": {
+          "distribution": [
+            1.03,
+            8.25,
+            28.87,
+            27.84,
+            34.02
+          ],
+          "no_opinion": 3.0,
+          "rank": 24,
+          "median_grade": 4,
+          "before_median": 38.14,
+          "after_median": 34.02,
+          "majority_tie_break": "approbation"
+        },
+        "DV": {
+          "distribution": [
+            3.06,
+            10.2,
+            30.61,
+            25.51,
+            30.61
+          ],
+          "no_opinion": 2.0,
+          "rank": 22,
+          "median_grade": 4,
+          "before_median": 43.88,
+          "after_median": 30.61,
+          "majority_tie_break": "approbation"
+        },
+        "FB": {
+          "distribution": [
+            1.02,
+            6.12,
+            22.45,
+            27.55,
+            42.86
+          ],
+          "no_opinion": 2.0,
+          "rank": 26,
+          "median_grade": 4,
+          "before_median": 29.59,
+          "after_median": 42.86,
+          "majority_tie_break": "rejet"
+        },
+        "MM": {
+          "distribution": [
+            7.22,
+            13.4,
+            23.71,
+            13.4,
+            42.27
+          ],
+          "no_opinion": 3.0,
+          "rank": 20,
+          "median_grade": 4,
+          "before_median": 44.33,
+          "after_median": 42.27,
+          "majority_tie_break": "approbation"
+        },
+        "XB": {
+          "distribution": [
+            2.04,
+            13.27,
+            33.67,
+            23.47,
+            27.55
+          ],
+          "no_opinion": 2.0,
+          "rank": 11,
+          "median_grade": 4,
+          "before_median": 48.98,
+          "after_median": 27.55,
+          "majority_tie_break": "approbation"
+        },
+        "OF": {
+          "distribution": [
+            2.06,
+            8.25,
+            37.11,
+            25.77,
+            26.8
+          ],
+          "no_opinion": 3.0,
+          "rank": 15,
+          "median_grade": 4,
+          "before_median": 47.42,
+          "after_median": 26.8,
+          "majority_tie_break": "approbation"
+        },
+        "EC": {
+          "distribution": [
+            3.06,
+            12.24,
+            24.49,
+            20.41,
+            39.8
+          ],
+          "no_opinion": 2.0,
+          "rank": 25,
+          "median_grade": 4,
+          "before_median": 39.8,
+          "after_median": 39.8,
+          "majority_tie_break": "approbation"
+        },
+        "BC": {
+          "distribution": [
+            3.09,
+            10.31,
+            36.08,
+            26.8,
+            23.71
+          ],
+          "no_opinion": 3.0,
+          "rank": 10,
+          "median_grade": 4,
+          "before_median": 49.48,
+          "after_median": 23.71,
+          "majority_tie_break": "approbation"
+        },
+        "MT": {
+          "distribution": [
+            3.09,
+            9.28,
+            31.96,
+            20.62,
+            35.05
+          ],
+          "no_opinion": 3.0,
+          "rank": 19,
+          "median_grade": 4,
+          "before_median": 44.33,
+          "after_median": 35.05,
+          "majority_tie_break": "approbation"
+        },
+        "LW": {
+          "distribution": [
+            2.04,
+            8.16,
+            33.67,
+            25.51,
+            30.61
+          ],
+          "no_opinion": 2.0,
+          "rank": 21,
+          "median_grade": 4,
+          "before_median": 43.88,
+          "after_median": 30.61,
+          "majority_tie_break": "approbation"
+        },
+        "YBP": {
+          "distribution": [
+            2.06,
+            6.19,
+            37.11,
+            24.74,
+            29.9
+          ],
+          "no_opinion": 3.0,
+          "rank": 18,
+          "median_grade": 4,
+          "before_median": 45.36,
+          "after_median": 29.9,
+          "majority_tie_break": "approbation"
+        },
+        "CA": {
+          "distribution": [
+            4.12,
+            7.22,
+            34.02,
+            20.62,
+            34.02
+          ],
+          "no_opinion": 3.0,
+          "rank": 17,
+          "median_grade": 4,
+          "before_median": 45.36,
+          "after_median": 34.02,
+          "majority_tie_break": "approbation"
+        },
+        "JLM": {
+          "distribution": [
+            7.22,
+            8.25,
+            13.4,
+            13.4,
+            57.73
+          ],
+          "no_opinion": 3.0,
+          "rank": 28,
+          "median_grade": 5,
+          "before_median": 42.27,
+          "after_median": 0.0,
+          "majority_tie_break": "approbation"
+        },
+        "EZ": {
+          "distribution": [
+            6.19,
+            9.28,
+            14.43,
+            17.53,
+            52.58
+          ],
+          "no_opinion": 3.0,
+          "rank": 27,
+          "median_grade": 5,
+          "before_median": 47.42,
+          "after_median": 0.0,
+          "majority_tie_break": "approbation"
+        },
+        "MBa": {
+          "distribution": [
+            2.06,
+            10.31,
+            35.05,
+            23.71,
+            28.87
+          ],
+          "no_opinion": 3.0,
+          "rank": 14,
+          "median_grade": 4,
+          "before_median": 47.42,
+          "after_median": 28.87,
+          "majority_tie_break": "approbation"
+        },
+        "GA": {
+          "distribution": [
+            3.09,
+            18.56,
+            27.84,
+            22.68,
+            27.84
+          ],
+          "no_opinion": 3.0,
+          "rank": 9,
+          "median_grade": 4,
+          "before_median": 49.48,
+          "after_median": 27.84,
+          "majority_tie_break": "approbation"
+        },
+        "BR": {
+          "distribution": [
+            5.15,
+            16.49,
+            28.87,
+            19.59,
+            29.9
+          ],
+          "no_opinion": 3.0,
+          "rank": 7,
+          "median_grade": 3,
+          "before_median": 21.65,
+          "after_median": 49.48,
+          "majority_tie_break": "rejet"
+        },
+        "DL": {
+          "distribution": [
+            2.04,
+            6.12,
+            44.9,
+            23.47,
+            23.47
+          ],
+          "no_opinion": 2.0,
+          "rank": 3,
+          "median_grade": 3,
+          "before_median": 8.16,
+          "after_median": 46.94,
+          "majority_tie_break": "rejet"
+        },
+        "JC": {
+          "distribution": [
+            2.04,
+            11.22,
+            32.65,
+            26.53,
+            27.55
+          ],
+          "no_opinion": 2.0,
+          "rank": 16,
+          "median_grade": 4,
+          "before_median": 45.92,
+          "after_median": 27.55,
+          "majority_tie_break": "approbation"
+        },
+        "SK": {
+          "distribution": [
+            7.14,
+            6.12,
+            37.76,
+            17.35,
+            31.63
+          ],
+          "no_opinion": 2.0,
+          "rank": 6,
+          "median_grade": 3,
+          "before_median": 13.27,
+          "after_median": 48.98,
+          "majority_tie_break": "rejet"
+        }
+      }
+    },
     {
       "id": "ipsos_202510",
       "poll_type_id": "pt1",
