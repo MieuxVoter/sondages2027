@@ -10,10 +10,10 @@ export const MobCommand: FC = () => {
     <Paper sx={{ bgcolor: 'primary.main' }} elevation={3}>
       <BottomNavigation showLabels sx={{ bgcolor: 'transparent', '& .MuiBottomNavigationAction-root': { color: 'white' }, '& .Mui-selected': { color: 'white !important' } }}>
         <BottomNavigationAction
-          label="Uninominal"
-          icon={<ScrutinUninominal />}
+          label="J. Majoritaire"
+          icon={<JugMaj />}
           component={Link}
-          to="/uninominal"
+          to="/majoritaire"
         />
         <BottomNavigationAction
           label="Approbation"
@@ -22,10 +22,10 @@ export const MobCommand: FC = () => {
           to="/approbation"
         />
         <BottomNavigationAction
-          label="J. Majoritaire"
-          icon={<JugMaj />}
+          label="Uninominal"
+          icon={<ScrutinUninominal />}
           component={Link}
-          to="/majoritaire"
+          to="/uninominal"
         />
       </BottomNavigation>
     </Paper>
