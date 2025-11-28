@@ -14,7 +14,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
             <main className="layout__main">
                 {children}
             </main>
-            <Footer />
+            {!isLandingPage && <Footer />}
         </div>
     );
 };

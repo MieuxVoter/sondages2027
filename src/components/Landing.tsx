@@ -47,12 +47,13 @@ export const Landing = () => {
         <Box
             sx={{
                 minHeight: '100vh',
+                height: '100vh',
+                overflow: 'hidden',
                 background: `linear-gradient(135deg, 
           ${alpha('#2400FD', 0.05)} 0%, 
           ${alpha('#0A004C', 0.08)} 50%,
           ${alpha('#2400FD', 0.05)} 100%)`,
                 position: 'relative',
-                overflow: 'hidden',
             }}
         >
             {/* Animated background elements */}
@@ -83,7 +84,7 @@ export const Landing = () => {
                 }}
             />
 
-            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, height: '100vh', overflowY: 'auto' }}>
                 {/* Hero Section */}
                 <Box
                     sx={{
