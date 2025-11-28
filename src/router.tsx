@@ -3,7 +3,6 @@ import {
   createRoute,
   createRouter,
   createHashHistory,
-  redirect,
   Outlet,
 } from '@tanstack/react-router'
 import { App } from './components/App'
@@ -15,6 +14,7 @@ import { WebRankingChart } from './components/web/chart-page/WebRankingChart'
 import { WebMeritChart } from './components/web/chart-page/WebMeritChart'
 import { WebTimeMeritGrid } from './components/web/chart-page/WebTimeMeritGrid'
 import { Approbation } from './components/Approbation'
+import { Landing } from './components/Landing'
 
 const rootRoute = createRootRoute({
   component: App,
@@ -23,10 +23,7 @@ const rootRoute = createRootRoute({
 const rootIndexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
-  beforeLoad: () => {
-    // eslint-disable-next-line @typescript-eslint/only-throw-error
-    throw redirect({ to: '/majoritaire' })
-  },
+  component: Landing,
 })
 
 const majoritaireRoute = createRoute({
@@ -50,7 +47,7 @@ const evolutionClassementRoute = createRoute({
 const profileMeriteSondageRoute = createRoute({
   getParentRoute: () => majoritaireRoute,
   path: '/profile-merite-sondage',
-  component: WebMeritChart 
+  component: WebMeritChart
 })
 
 const grilleProfileMeriteRoute = createRoute({
