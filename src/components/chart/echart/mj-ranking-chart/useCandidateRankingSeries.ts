@@ -31,7 +31,10 @@ export const useCandidateRankingSeries = (selectedCandidates?: Set<string>) => {
         emphasis: {
           lineStyle: {
             width: 4,
-            color: graphColor.candidateColor[ranking.name]
+            color: graphColor.candidateColor[ranking.name],
+            shadowBlur: 10,
+            shadowColor: 'rgba(0, 0, 0, 0.5)',
+            shadowOffsetY: 3
           }
         },
         endLabel: {
