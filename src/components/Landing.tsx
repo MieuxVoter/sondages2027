@@ -47,8 +47,8 @@ export const Landing = () => {
         <Box
             sx={{
                 minHeight: '100vh',
-                height: '100vh',
-                overflow: 'hidden',
+                width: '100%',
+                overflowX: 'hidden',
                 background: `linear-gradient(135deg, 
           ${alpha('#2400FD', 0.05)} 0%, 
           ${alpha('#0A004C', 0.08)} 50%,
@@ -59,7 +59,7 @@ export const Landing = () => {
             {/* Animated background elements */}
             <Box
                 sx={{
-                    position: 'absolute',
+                    position: 'fixed',
                     top: '10%',
                     right: '10%',
                     width: '400px',
@@ -68,11 +68,13 @@ export const Landing = () => {
                     background: `radial-gradient(circle, ${alpha('#2400FD', 0.1)} 0%, transparent 70%)`,
                     transform: `translate(${(mousePosition.x - 50) * 0.5}px, ${(mousePosition.y - 50) * 0.5}px)`,
                     transition: 'transform 0.2s ease-out',
+                    zIndex: 0,
+                    pointerEvents: 'none',
                 }}
             />
             <Box
                 sx={{
-                    position: 'absolute',
+                    position: 'fixed',
                     bottom: '5%',
                     left: '5%',
                     width: '300px',
@@ -81,10 +83,12 @@ export const Landing = () => {
                     background: `radial-gradient(circle, ${alpha('#0A004C', 0.08)} 0%, transparent 70%)`,
                     transform: `translate(${(mousePosition.x - 50) * -0.4}px, ${(mousePosition.y - 50) * -0.4}px)`,
                     transition: 'transform 0.2s ease-out',
+                    zIndex: 0,
+                    pointerEvents: 'none',
                 }}
             />
 
-            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, height: '100vh', overflowY: 'auto' }}>
+            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
                 {/* Hero Section */}
                 <Box
                     sx={{
