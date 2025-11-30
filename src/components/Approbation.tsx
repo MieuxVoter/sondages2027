@@ -11,7 +11,7 @@ export function Approbation() {
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
-      <Paper elevation={0} sx={{ p: { xs: 3, md: 5 }, mb: 6, borderRadius: 4, bgcolor: 'primary.main', color: 'white' }}>
+      <Paper elevation={0} sx={{ p: { xs: 3, md: 5 }, mb: 6, borderRadius: 0.5, bgcolor: 'primary.main', color: 'white' }}>
         <Typography variant="body1" paragraph sx={{ fontSize: '1.1rem', maxWidth: '800px' }}>
           Le <strong>vote par approbation</strong> permet à chaque électeur d'approuver autant de candidats qu'il le souhaite. Le candidat avec le plus d'approbations l'emporte.
         </Typography>

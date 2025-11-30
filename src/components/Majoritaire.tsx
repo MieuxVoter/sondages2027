@@ -11,7 +11,7 @@ export function Majoritaire() {
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
-      <Paper elevation={0} sx={{ p: { xs: 3, md: 5 }, mb: 6, borderRadius: 4, bgcolor: 'primary.main', color: 'white' }}>
+      <Paper elevation={0} sx={{ p: { xs: 3, md: 5 }, mb: 6, borderRadius: 0.5, bgcolor: 'primary.main', color: 'white' }}>
         <Typography variant="body1" paragraph sx={{ fontSize: '1.1rem', maxWidth: '800px' }}>
           Le <strong>jugement majoritaire</strong> est une méthode de vote innovante où chaque électeur attribue une mention (très satisfait, plutôt satisfait, ni satisfait ni insatisfait, plutôt insatisfait, très insatisfait) à chaque candidat.
         </Typography>

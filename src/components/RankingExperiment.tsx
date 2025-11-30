@@ -78,7 +78,7 @@ export const RankingExperiment = () => {
                 elevation={0}
                 sx={{
                     border: `1px solid ${alpha('#000', 0.08)}`,
-                    borderRadius: 3,
+                    borderRadius: 0.5,
                     overflow: 'hidden',
                 }}
             >
