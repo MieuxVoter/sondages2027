@@ -11,10 +11,26 @@ interface ChartCardProps {
 
 export const ChartCard: React.FC<ChartCardProps> = ({ title, description, chart, onClick, sx }) => {
     const theme = useTheme();
-    const thumbnailSx = { height: "200px", width: 1, bgcolor: alpha(theme.palette.info.main, 0.07) };
+    const thumbnailSx = { height: "200px", width: 1, bgcolor: "white" };
+
+
+
+
 
     return (
-        <Card sx={{ cursor: 'pointer', ...sx }} onClick={onClick}>
+        <Card sx={{
+            px: 4,
+            py: 1.5,
+            fontSize: '1.1rem',
+            borderRadius: '15px',
+            textTransform: 'none',
+            boxShadow: `0 8px 20px ${alpha('#2400FD', 0.25)}`,
+            '&:hover': {
+                boxShadow: `0 12px 10px ${alpha('#2400FD', 0.35)}`,
+                transform: 'translateY(-2px)',
+            },
+            transition: 'all 0.3s ease', ...sx
+        }} onClick={onClick}>
             <Box sx={{ pointerEvents: 'none' }}>
                 <Thumbnail sx={thumbnailSx}>
                     {chart}
@@ -22,7 +38,7 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, description, chart,
             </Box>
             <CardContent>
                 <Typography variant="h6">{title}</Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="">
                     {description}
                 </Typography>
             </CardContent>
