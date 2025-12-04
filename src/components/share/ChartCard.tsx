@@ -1,4 +1,4 @@
-import { alpha, Box, Card, CardContent, Typography, useTheme } from "@mui/material";
+import { Box, Card, CardContent, Typography } from "@mui/material";
 import { Thumbnail } from "./Thumbnail";
 
 interface ChartCardProps {
@@ -10,7 +10,6 @@ interface ChartCardProps {
 }
 
 export const ChartCard: React.FC<ChartCardProps> = ({ title, description, chart, onClick, sx }) => {
-    const theme = useTheme();
     const thumbnailSx = { height: "200px", width: 1, bgcolor: "white" };
 
 
