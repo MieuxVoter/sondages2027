@@ -19,14 +19,14 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, description, chart,
 
     return (
         <Card sx={{
-            px: 4,
+            px: 5,
             py: 1.5,
             fontSize: '1.1rem',
             borderRadius: '15px',
             textTransform: 'none',
-            boxShadow: `0 8px 20px ${alpha('#2400FD', 0.25)}`,
+            boxShadow: 2,
             '&:hover': {
-                boxShadow: `0 12px 10px ${alpha('#2400FD', 0.35)}`,
+                boxShadow: 8,
                 transform: 'translateY(-2px)',
             },
             transition: 'all 0.3s ease', ...sx
