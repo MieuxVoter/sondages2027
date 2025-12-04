@@ -6,11 +6,11 @@ export const themeColor = {
 } as const
 
 const fiveGradeScaleBase = [
-    "rgb(160, 207, 28)",
-    "rgb(211, 215, 21)",
-    "rgb(194, 177, 19)",
-    "rgb(194, 124, 19)",
-    "rgb(194, 61, 19)"
+    "rgb(37, 2, 253)",
+    "rgb(145, 127, 253)",
+    "rgb(217, 217, 217)",
+    "rgb(255, 159, 156)",
+    "rgb(255, 62, 56)"
 ];
 
 const candidateColor: Record<string, string> = {
