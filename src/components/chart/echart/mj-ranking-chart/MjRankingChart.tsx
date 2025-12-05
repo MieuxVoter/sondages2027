@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import type { EChartsOption } from 'echarts';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -16,7 +16,7 @@ interface MjRankingChartProps {
 export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = false }) => {
   const [selectedCandidates, setSelectedCandidates] = useState<Set<string>>(new Set());
 
-  const candidateRankingsSeries = useCandidateRankingSeries(selectedCandidates);
+  const candidateRankingsSeries = useCandidateRankingSeries(selectedCandidates, isThumbnail);
   // const gradeAreaSeries = useGradeAreaSeries();
   const lastPollDate = useSelector(selectLastPt1Date);
 
@@ -63,13 +63,33 @@ export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = fa
             {!isThumbnail &&
             <ChartTitle
               title="Classement des candidats à l'éléction présidentiel 2027"
-              subtitle1={`source : IPSOS, commanditaire La Tribune Dimanche, dernier sondage: 
+              subtitle1={`source : IPSOS, commanditaire La Tribune Dimanche, dernier sondage:
                 ${lastPollDate ? new Date(lastPollDate).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : 'N/A'}`}
               subtitle2="scrutin : Jugement majoritaire "/>
             }
           </>
         }
-        center={<Chart option={rankingChartOption} onEvents={chartEvents} />}
+        center={
+          <Box sx={{ width: 1, height: 1, position: 'relative' }}>
+            <Chart option={rankingChartOption} onEvents={chartEvents} />
+            {selectedCandidates.size > 0 && (
+              <Button
+                type="button"
+                variant="contained"
+                size="small"
+                onClick={() => setSelectedCandidates(new Set())}
+                sx={{
+                  position: 'absolute',
+                  bottom: 150,
+                  left: 100,
+                  zIndex: 1000
+                }}
+              >
+                Réinitialiser
+              </Button>
+            )}
+          </Box>
+        }
       />
     </Box>
   )

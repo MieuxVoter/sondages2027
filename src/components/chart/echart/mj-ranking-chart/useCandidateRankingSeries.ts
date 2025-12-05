@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { graphColor } from '../../../../colors';
 import { selectCandidateRankingsForECharts } from '../../../../store/jm-slice/jm-selector';
 
-export const useCandidateRankingSeries = (selectedCandidates?: Set<string>) => {
+export const useCandidateRankingSeries = (selectedCandidates: Set<string>, isThumbnail: boolean) => {
   const candidateRankings = useSelector(selectCandidateRankingsForECharts);
 
   const candidateRankingsSeries = useMemo(() => {
@@ -21,6 +21,9 @@ export const useCandidateRankingSeries = (selectedCandidates?: Set<string>) => {
         symbolSize: isSelected ? 6 : 0,
         showSymbol: isSelected,
         triggerLineEvent: true,
+        animation: !isThumbnail,
+        animationDuration: 2000,
+        animationEasing: 'cubicOut' as const,
         lineStyle: {
           color: shouldGray ? '#cccccc' : graphColor.candidateColor[ranking.name],
           width: isSelected ? 4 : 1.5
