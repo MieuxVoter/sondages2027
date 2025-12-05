@@ -1,21 +1,13 @@
-import type { Metadata } from "./common-survey.type";
+import type { Candidate, Metadata, PollType } from "./common.type";
 
 export interface MjSurvey {
   metadata: Metadata;
   poll_types: Record<string, PollType>;
   candidates: Record<string, Candidate>;
-  polls: Poll[];
+  polls: MjPoll[];
 }
 
-
-export interface Candidate {
-  name: string;
-  party: string;
-  announced: string | null;
-  withdrawn: string | null;
-}
-
-export interface PollResult {
+export interface MjPollResult {
   distribution: number[];
   no_opinion: number;
   rank: number;
@@ -25,26 +17,11 @@ export interface PollResult {
   majority_tie_break: string;
 }
 
-export interface Poll {
+export interface MjPoll {
   id: string;
   poll_type_id: string;
   field_dates: string[]
-  results: Record<string, PollResult>;
-}
-
-export interface PollType {
-  id: string;
-  organization: string;
-  num_grades: number;
-  question: string;
-  grades: Grade[];
-}
-
-
-
-export interface Grade {
-  rank: number;
-  label: string;
+  results: Record<string, MjPollResult>;
 }
 
 export interface DateRank {

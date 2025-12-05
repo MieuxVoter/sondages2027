@@ -33,7 +33,7 @@ export const WebApprobation: React.FC = () => {
                         sx={{ flex: 1 }}
                     />
                 </Box>
-                <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
+                {/* <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
                     <ChartCard
                         title="Grille de profile de mérite"
                         description="Evolution du profile de mérite d'un candidat au cours du temps"
@@ -41,7 +41,7 @@ export const WebApprobation: React.FC = () => {
                         onClick={() => navigate({ to: '/majoritaire/grille-profile-merite' })}
                         sx={{ flex: 1, maxWidth: 'calc(50% - 4px)' }}
                     />
-                </Box>
+                </Box> */}
             </Box>
         </Box>
 

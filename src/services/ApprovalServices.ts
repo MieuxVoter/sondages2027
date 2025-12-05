@@ -1,6 +1,6 @@
-import type { MjSurvey } from "../types/mj-survey.types";
+import type { ApprobationSurvey } from "../types/approbation-survey.type";
 
-export async function getLatestApprovalSurveyData(): Promise<MjSurvey> {
+export async function getLatestApprovalSurveyData(): Promise<ApprobationSurvey> {
     const proxyUrl = 'https://corsproxy.io/?';
     const jsonUrl = 'https://github.com/MieuxVoter/mj-tracker-2027/releases/download/latest-data/latest_survey_approval_compact.json';
     const jsonResponse = await fetch(proxyUrl + encodeURIComponent(jsonUrl));
