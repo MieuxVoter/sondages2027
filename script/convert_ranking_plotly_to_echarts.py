@@ -93,9 +93,7 @@ def create_echarts_config(candidates, background_areas, layout):
     for candidate_name, candidate_data in candidates.items():
         # Calculer le rang à la dernière position
         last_y = candidate_data["y"][-1]
-        rank = int(
-            round(last_y)
-        )  # Le rang correspond directement à la valeur y arrondie
+        rank = int(round(last_y))  # Le rang correspond directement à la valeur y arrondie
 
         # Formater le rang (1er, 2e, 3e, etc.)
         if rank == 1:
@@ -107,9 +105,7 @@ def create_echarts_config(candidates, background_areas, layout):
             {
                 "name": candidate_name,
                 "type": "line",
-                "data": [
-                    [x, y] for x, y in zip(candidate_data["x"], candidate_data["y"])
-                ],
+                "data": [[x, y] for x, y in zip(candidate_data["x"], candidate_data["y"])],
                 "lineStyle": {"color": candidate_data["color"], "width": 2},
                 "itemStyle": {"color": candidate_data["color"]},
                 "showSymbol": True,
@@ -133,9 +129,7 @@ def create_echarts_config(candidates, background_areas, layout):
             "left": "center",
             "textStyle": {"fontWeight": "bold"},
         },
-        "tooltip": {
-            "trigger": "item"
-        },
+        "tooltip": {"trigger": "item"},
         "legend": {
             "data": [area["name"] for area in background_areas if area["showlegend"]],
             "bottom": 0,
@@ -176,16 +170,12 @@ def main():
     if len(sys.argv) > 1:
         input_file = Path(sys.argv[1])
     else:
-        input_file = (
-            Path(__file__).parent.parent / "src" / "data" / "ranking-plot-all.json"
-        )
+        input_file = Path(__file__).parent.parent / "src" / "data" / "ranking-plot-all.json"
 
     if len(sys.argv) > 2:
         output_file = Path(sys.argv[2])
     else:
-        output_file = (
-            Path(__file__).parent.parent / "src" / "data" / "echarts_ranking.json"
-        )
+        output_file = Path(__file__).parent.parent / "src" / "data" / "echarts_ranking.json"
 
     print(f"Lecture du fichier: {input_file}")
 
@@ -200,9 +190,7 @@ def main():
     print(f"Trouvé {len(background_areas)} zones de satisfaction")
 
     # Créer la configuration ECharts
-    echarts_config = create_echarts_config(
-        candidates, background_areas, plotly_data.get("layout", {})
-    )
+    echarts_config = create_echarts_config(candidates, background_areas, plotly_data.get("layout", {}))
 
     # Sauvegarder
     with open(output_file, "w", encoding="utf-8") as f:

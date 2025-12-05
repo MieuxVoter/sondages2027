@@ -16,6 +16,8 @@ import { WebTimeMeritGrid } from './components/web/chart-page/WebTimeMeritGrid'
 import { Approbation } from './components/Approbation'
 import { Landing } from './components/Landing'
 import { RankingExperiment } from './components/RankingExperiment'
+import { Majoritaire2 } from './components/Majoritaire2'
+import { Approbation2 } from './components/Approbation2'
 
 const rootRoute = createRootRoute({
   component: App,
@@ -87,6 +89,18 @@ const testPlotly = createRoute({
   component: TestPlotly,
 })
 
+const majoritaire2Route = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/majoritaire2',
+  component: Majoritaire2,
+})
+
+const approbation2Route = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/approbation2',
+  component: Approbation2,
+})
+
 const routeTree = rootRoute.addChildren([
   rootIndexRoute,
   majoritaireRoute.addChildren([
@@ -96,6 +110,8 @@ const routeTree = rootRoute.addChildren([
     grilleProfileMeriteRoute,
     ProfileMeriteCandidateRoute,
   ]),
+  majoritaire2Route,
+  approbation2Route,
   uninominalRoute,
   approbationRoute,
   rankingExperimentRoute,
