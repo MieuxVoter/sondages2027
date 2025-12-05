@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Chart from '../../../../share/component/Chart';
 import { ChartTitle } from '../../../../share/component/ChartTitle';
 import { BorderLayout } from '../../../../share/component/layout/BorderLayout';
-import { selectLastApprovalDate } from '../../../../store/approval-slice/approval-selector';
+import { selectCandidateOrderedByLatestApprovalRank, selectLastApprovalDate } from '../../../../store/approval-slice/approval-selector';
 import { approvalEvolutionChartConfig } from './approvalEvolutionChartConfig';
 import { useCandidateApprovalEvolutionSeries } from './useCandidateApprovalEvolutionSeries';
 
@@ -18,6 +18,13 @@ export const ApprovalEvolutionChart: React.FC<ApprovalEvolutionChartProps> = ({ 
 
   const candidateApprovalSeries = useCandidateApprovalEvolutionSeries(selectedCandidates, isThumbnail);
   const lastPollDate = useSelector(selectLastApprovalDate);
+  const latestApprovals = useSelector(selectCandidateOrderedByLatestApprovalRank);
+
+  // Calculer le maximum de l'axe Y (dizaine supérieure du meilleur taux d'approbation)
+  const maxApproval = latestApprovals.length > 0
+    ? Math.max(...latestApprovals.map(c => c.approval))
+    : 100;
+  const yAxisMax = Math.ceil(maxApproval / 10) * 10;
 
   const series = [...candidateApprovalSeries];
 
@@ -42,6 +49,10 @@ export const ApprovalEvolutionChart: React.FC<ApprovalEvolutionChartProps> = ({ 
 
   const evolutionChartOption: EChartsOption = {
     ...approvalEvolutionChartConfig,
+    yAxis: {
+      ...approvalEvolutionChartConfig.yAxis,
+      max: yAxisMax
+    },
     legend: { show: false },
     series
   }
@@ -76,7 +87,7 @@ export const ApprovalEvolutionChart: React.FC<ApprovalEvolutionChartProps> = ({ 
                 onClick={() => setSelectedCandidates(new Set())}
                 sx={{
                   position: 'absolute',
-                  bottom: 150,
+                  bottom: 100,
                   left: 100,
                   zIndex: 1000
                 }}
