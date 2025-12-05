@@ -13,7 +13,6 @@ export function App() {
   const approvalData = useSelector((state: RootState) => state.approval.survey)
 
   useEffect(() => {
-    // Ne charger que si les données ne sont pas déjà présentes
     if (!jmData) {
       dispatch(loadMajorityJugmentData())
     }
