@@ -9,7 +9,6 @@ import {
 import { App } from './application/App'
 import { Majoritaire } from './application/Majoritaire'
 import { Building } from './application/Building'
-import { TestPlotly } from './application/chart/plotly/TestPlotly'
 import { WebTimeMeritChart } from './application/web/chart-page/WebTimeMeritChart'
 import { WebRankingChart } from './application/web/chart-page/WebRankingChart'
 import { WebMeritChart } from './application/web/chart-page/WebMeritChart'
@@ -17,6 +16,7 @@ import { WebTimeMeritGrid } from './application/web/chart-page/WebTimeMeritGrid'
 import { Approbation } from './application/Approbation'
 import { WebApprovalRankingChart } from './application/web/chart-page/WebApprovalRankingChart'
 import { WebApprovalRateChart } from './application/web/chart-page/WebApprovalRateChart'
+import { WebApprovalEvolutionChart } from './application/web/chart-page/WebApprovalEvolutionChart'
 
 const rootRoute = createRootRoute({
   component: App,
@@ -97,10 +97,10 @@ const approbationTauxApprobationRoute = createRoute({
   component: WebApprovalRateChart
 })
 
-const testPlotly = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/test-plotly',
-  component: TestPlotly,
+const approbationEvolutionTauxApprobationRoute = createRoute({
+  getParentRoute: () => approbationRoute,
+  path: '/evolution-taux-approbation',
+  component: WebApprovalEvolutionChart
 })
 
 const routeTree = rootRoute.addChildren([
@@ -117,8 +117,8 @@ const routeTree = rootRoute.addChildren([
     approbationIndexRoute,
     approbationEvolutionClassementRoute,
     approbationTauxApprobationRoute,
+    approbationEvolutionTauxApprobationRoute,
   ]),
-  testPlotly,
 ])
 
 const hashHistory = createHashHistory()

@@ -3,6 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { ChartCard } from "../../share/component/ChartCard";
 import { ApprovalRankingChart } from "../chart/echart/approval-ranking-chart/ApprovalRankingChart";
 import { ApprovalRateChart } from "../chart/echart/approval-rate-chart/ApprovalRateChart";
+import { ApprovalEvolutionChart } from "../chart/echart/approval-evolution-chart/ApprovalEvolutionChart";
 
 export const WebApprobation: React.FC = () => {
     const navigate = useNavigate();
@@ -30,6 +31,15 @@ export const WebApprobation: React.FC = () => {
                         chart={<ApprovalRateChart isThumbnail />}
                         onClick={() => navigate({ to: '/approbation/taux-approbation' })}
                         sx={{ flex: 1 }}
+                    />
+                </Box>
+                <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
+                    <ChartCard
+                        title="Evolution du Taux d'Approbation"
+                        description="Evolution du taux d'approbation des candidats sondage après sondage"
+                        chart={<ApprovalEvolutionChart isThumbnail />}
+                        onClick={() => navigate({ to: '/approbation/evolution-taux-approbation' })}
+                        sx={{ flex: 1, maxWidth: 'calc(50% - 4px)' }}
                     />
                 </Box>
             </Box>

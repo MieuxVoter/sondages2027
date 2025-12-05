@@ -146,3 +146,59 @@ export const selectCandidateApprovalByPollIndex = createSelector(
             .sort((a, b) => a.rank - b.rank);
     }
 );
+
+interface DateApproval {
+    date: string;
+    approval: number;
+}
+
+type CandidateApprovalRates = Record<string, DateApproval[]>;
+
+export const selectCandidateApprovalRatesOverTime = createSelector(
+    [selectApprovalData],
+    (approvalData): CandidateApprovalRates | null => {
+        if (!approvalData) {
+            return null;
+        }
+
+        const rates = approvalData.polls.reduce<CandidateApprovalRates>((acc, poll) => {
+            const date = poll.field_dates[1];
+            if (!date) return acc;
+
+            return Object.entries(poll.results).reduce((innerAcc, [candidateId, result]) => {
+                const updatedRates = [
+                    ...(innerAcc[candidateId] || []),
+                    { date, approval: result.approval }
+                ].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+                return {
+                    ...innerAcc,
+                    [candidateId]: updatedRates
+                };
+            }, acc);
+        }, {});
+
+        return rates;
+    }
+);
+
+export const selectCandidateApprovalRatesForECharts = createSelector(
+    [selectApprovalData, selectCandidateApprovalRatesOverTime],
+    (approvalData, rates): EChartsSeriesData[] | null => {
+        if (!approvalData || !rates) {
+            return null;
+        }
+
+        return Object.entries(rates)
+            .map(([candidateId, dateApprovals]) => {
+                const candidate = approvalData.candidates[candidateId];
+                if (!candidate) return null;
+                const data: [string, number][] = dateApprovals.map(da => [da.date, da.approval]);
+                return {
+                    name: candidate.name,
+                    data
+                };
+            })
+            .filter((item): item is EChartsSeriesData => item !== null);
+    }
+);
