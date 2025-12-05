@@ -6,15 +6,15 @@ import {
   redirect,
   Outlet,
 } from '@tanstack/react-router'
-import { App } from './components/App'
-import { Majoritaire } from './components/Majoritaire'
-import { Building } from './components/Building'
-import { TestPlotly } from './components/chart/plotly/TestPlotly'
-import { WebTimeMeritChart } from './components/web/chart-page/WebTimeMeritChart'
-import { WebRankingChart } from './components/web/chart-page/WebRankingChart'
-import { WebMeritChart } from './components/web/chart-page/WebMeritChart'
-import { WebTimeMeritGrid } from './components/web/chart-page/WebTimeMeritGrid'
-import { Approbation } from './components/Approbation'
+import { App } from './application/App'
+import { Majoritaire } from './application/Majoritaire'
+import { Building } from './application/Building'
+import { TestPlotly } from './application/chart/plotly/TestPlotly'
+import { WebTimeMeritChart } from './application/web/chart-page/WebTimeMeritChart'
+import { WebRankingChart } from './application/web/chart-page/WebRankingChart'
+import { WebMeritChart } from './application/web/chart-page/WebMeritChart'
+import { WebTimeMeritGrid } from './application/web/chart-page/WebTimeMeritGrid'
+import { Approbation } from './application/Approbation'
 
 const rootRoute = createRootRoute({
   component: App,
