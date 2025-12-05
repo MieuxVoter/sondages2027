@@ -1,4 +1,4 @@
-import { Box, MenuItem, Select, Typography } from "@mui/material";
+import { Box, MenuItem, Select, Typography, useTheme } from "@mui/material";
 import type { EChartsOption } from "echarts";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -17,6 +17,7 @@ interface ApprovalRateChartProps {
 export const ApprovalRateChart: React.FC<ApprovalRateChartProps> = ({
   isThumbnail = false
 }) => {
+  const theme = useTheme();
   const [pollIndex, setPollIndex] = useState(0);
 
   const approvalDates = useSelector(selectApprovalDates);
@@ -30,10 +31,10 @@ export const ApprovalRateChart: React.FC<ApprovalRateChartProps> = ({
     },
     series: [{
       type: 'bar' as const,
-      data: candidateApprovals?.map((ca, index) => ({
+      data: candidateApprovals?.map((ca) => ({
         value: ca.approval,
         itemStyle: {
-          color: graphColor.candidateColor[ca.name] || graphColor.primary
+          color: graphColor.candidateColor[ca.name] || theme.palette.primary.main
         }
       })) || [],
       label: {
