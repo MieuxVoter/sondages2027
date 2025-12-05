@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getLatestApprovalSurveyData } from "../../services/ApprovalServices";
 import type { MjSurvey } from "../../types/mj-survey.types";
+import type { ApprobationSurvey } from "../../types/approbation-survey.type";
 
 interface ApprovalState {
     survey: MjSurvey | null;
@@ -28,7 +29,7 @@ function handleLoadApprovalData(builder: any) {
     });
 }
 
-export const loadApprovalData = createAsyncThunk<MjSurvey, void>('approval/load',
+export const loadApprovalData = createAsyncThunk<ApprobationSurvey, void>('approval/load',
     async () => {
         return await getLatestApprovalSurveyData();
     }
