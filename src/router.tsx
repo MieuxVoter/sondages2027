@@ -15,6 +15,8 @@ import { WebRankingChart } from './application/web/chart-page/WebRankingChart'
 import { WebMeritChart } from './application/web/chart-page/WebMeritChart'
 import { WebTimeMeritGrid } from './application/web/chart-page/WebTimeMeritGrid'
 import { Approbation } from './application/Approbation'
+import { WebApprovalRankingChart } from './application/web/chart-page/WebApprovalRankingChart'
+import { WebApprovalRateChart } from './application/web/chart-page/WebApprovalRateChart'
 
 const rootRoute = createRootRoute({
   component: App,
@@ -74,7 +76,25 @@ const uninominalRoute = createRoute({
 const approbationRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/approbation',
+  component: Outlet,
+})
+
+const approbationIndexRoute = createRoute({
+  getParentRoute: () => approbationRoute,
+  path: '/',
   component: Approbation,
+})
+
+const approbationEvolutionClassementRoute = createRoute({
+  getParentRoute: () => approbationRoute,
+  path: '/evolution-classement',
+  component: WebApprovalRankingChart
+})
+
+const approbationTauxApprobationRoute = createRoute({
+  getParentRoute: () => approbationRoute,
+  path: '/taux-approbation',
+  component: WebApprovalRateChart
 })
 
 const testPlotly = createRoute({
@@ -93,7 +113,11 @@ const routeTree = rootRoute.addChildren([
     ProfileMeriteCandidateRoute,
   ]),
   uninominalRoute,
-  approbationRoute,
+  approbationRoute.addChildren([
+    approbationIndexRoute,
+    approbationEvolutionClassementRoute,
+    approbationTauxApprobationRoute,
+  ]),
   testPlotly,
 ])
 
