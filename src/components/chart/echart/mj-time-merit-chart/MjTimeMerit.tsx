@@ -16,9 +16,10 @@ interface MjTimeMeritChartProps {
     isThumbnail?: boolean;
     height?: number | string;
     controlMode?: 'select' | 'buttons';
+    hideTitle?: boolean;
 }
 
-export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ candidateId, isThumbnail = false, height, controlMode = 'select' }) => {
+export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ candidateId, isThumbnail = false, height, controlMode = 'select', hideTitle = false }) => {
     const navigate = useNavigate()
     const candidates = useSelector(selectCandidateOrderedByLatestRank)
     const [selectedCandidate, setSelectedCandidate] = useState<string>(candidateId ?? candidates[0]?.candidateId)
@@ -57,7 +58,7 @@ export const MjTimeMeritChart: React.FC<MjTimeMeritChartProps> = ({ candidateId,
 
     return (
         <Box sx={{ width: 1, height: 1, display: 'flex', flexDirection: 'column' }}>
-            {!isThumbnail &&
+            {!isThumbnail && !hideTitle &&
                 <ChartTitle
                     title={`Évolution des mentions pour ${candidateInfo?.name}`}
                     subtitle1="Source : IPSOS - La Tribune Dimanche"

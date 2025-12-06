@@ -13,12 +13,14 @@ interface MjMeritChartProps {
   isThumbnail?: boolean;
   height?: number | string;
   controlMode?: 'select' | 'buttons';
+  hideTitle?: boolean;
 }
 
 export const MjMeritChart: React.FC<MjMeritChartProps> = ({
   isThumbnail = false,
   height,
-  controlMode = 'select'
+  controlMode = 'select',
+  hideTitle = false
 }) => {
   const [pollIndex, setPollIndex] = useState(0);
 
@@ -47,10 +49,10 @@ export const MjMeritChart: React.FC<MjMeritChartProps> = ({
 
   return (<>
     <Box sx={{ width: 1, height: 1, display: 'flex', flexDirection: 'column' }}>
-      {!isThumbnail &&
+      {!isThumbnail && !hideTitle &&
         <ChartTitle
-          title="Profide de mérite - sondage unique"
-          subtitle1={`Comparaison du profile de mérite des différents candidats pour un sondage donné au scrutin majoritaire`}
+          title="Profil de mérite - sondage unique"
+          subtitle1={`Comparaison du profil de mérite des différents candidats pour un sondage donné au scrutin majoritaire`}
         />}
       <Box sx={{ width: 1, flexGrow: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
         {

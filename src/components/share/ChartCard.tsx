@@ -33,11 +33,6 @@ export const ChartCard: FC<ChartCardProps> = ({ title, description, children, on
             height: '100%',
             display: 'flex',
             flexDirection: 'column',
-            transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
-            '&:hover': {
-                transform: 'translateY(-4px)',
-                boxShadow: '0 12px 24px rgba(0,0,0,0.1)',
-            }
         }}>
             {onClick ? (
                 <CardActionArea

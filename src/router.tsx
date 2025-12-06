@@ -3,21 +3,17 @@ import {
   createRoute,
   createRouter,
   createHashHistory,
-  Outlet,
 } from '@tanstack/react-router'
 import { App } from './components/App'
-import { Majoritaire } from './components/Majoritaire'
 import { Building } from './components/Building'
 import { TestPlotly } from './components/chart/plotly/TestPlotly'
 import { WebTimeMeritChart } from './components/web/chart-page/WebTimeMeritChart'
 import { WebRankingChart } from './components/web/chart-page/WebRankingChart'
 import { WebMeritChart } from './components/web/chart-page/WebMeritChart'
 import { WebTimeMeritGrid } from './components/web/chart-page/WebTimeMeritGrid'
-import { Approbation } from './components/Approbation'
 import { Landing } from './components/Landing'
-import { RankingExperiment } from './components/RankingExperiment'
-import { Majoritaire2 } from './components/Majoritaire2'
-import { Approbation2 } from './components/Approbation2'
+import { Majoritaire } from './components/Majoritaire'
+import { Approbation } from './components/Approbation'
 
 const rootRoute = createRootRoute({
   component: App,
@@ -29,46 +25,11 @@ const rootIndexRoute = createRoute({
   component: Landing,
 })
 
+// Main routes use the new scrollable layouts
 const majoritaireRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/majoritaire',
-  component: Outlet,
-})
-
-const majoritaireIndexRoute = createRoute({
-  getParentRoute: () => majoritaireRoute,
-  path: '/',
   component: Majoritaire,
-})
-
-const evolutionClassementRoute = createRoute({
-  getParentRoute: () => majoritaireRoute,
-  path: '/evolution-classement',
-  component: WebRankingChart
-})
-
-const profileMeriteSondageRoute = createRoute({
-  getParentRoute: () => majoritaireRoute,
-  path: '/profile-merite-sondage',
-  component: WebMeritChart
-})
-
-const grilleProfileMeriteRoute = createRoute({
-  getParentRoute: () => majoritaireRoute,
-  path: '/grille-profile-merite',
-  component: WebTimeMeritGrid,
-})
-
-const ProfileMeriteCandidateRoute = createRoute({
-  getParentRoute: () => majoritaireRoute,
-  path: '/profile-merite-candidate/$candidateId',
-  component: WebTimeMeritChart,
-})
-
-const uninominalRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/uninominal',
-  component: Building
 })
 
 const approbationRoute = createRoute({
@@ -77,10 +38,35 @@ const approbationRoute = createRoute({
   component: Approbation,
 })
 
-const rankingExperimentRoute = createRoute({
+const uninominalRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/ranking-experiment',
-  component: RankingExperiment,
+  path: '/uninominal',
+  component: Building
+})
+
+// Detail pages (accessed via direct links if needed)
+const evolutionClassementRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/majoritaire/evolution-classement',
+  component: WebRankingChart
+})
+
+const profileMeriteSondageRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/majoritaire/profile-merite-sondage',
+  component: WebMeritChart
+})
+
+const grilleProfileMeriteRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/majoritaire/grille-profile-merite',
+  component: WebTimeMeritGrid,
+})
+
+const ProfileMeriteCandidateRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/majoritaire/profile-merite-candidate/$candidateId',
+  component: WebTimeMeritChart,
 })
 
 const testPlotly = createRoute({
@@ -89,32 +75,15 @@ const testPlotly = createRoute({
   component: TestPlotly,
 })
 
-const majoritaire2Route = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/majoritaire2',
-  component: Majoritaire2,
-})
-
-const approbation2Route = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/approbation2',
-  component: Approbation2,
-})
-
 const routeTree = rootRoute.addChildren([
   rootIndexRoute,
-  majoritaireRoute.addChildren([
-    majoritaireIndexRoute,
-    evolutionClassementRoute,
-    profileMeriteSondageRoute,
-    grilleProfileMeriteRoute,
-    ProfileMeriteCandidateRoute,
-  ]),
-  majoritaire2Route,
-  approbation2Route,
-  uninominalRoute,
+  majoritaireRoute,
   approbationRoute,
-  rankingExperimentRoute,
+  uninominalRoute,
+  evolutionClassementRoute,
+  profileMeriteSondageRoute,
+  grilleProfileMeriteRoute,
+  ProfileMeriteCandidateRoute,
   testPlotly,
 ])
 
@@ -130,4 +99,3 @@ declare module '@tanstack/react-router' {
     router: typeof router
   }
 }
-

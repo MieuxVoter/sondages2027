@@ -12,9 +12,10 @@ import { ChartTitle } from '../../../share/ChartTitle';
 interface MjRankingChartProps {
   isThumbnail?: boolean;
   height?: number | string;
+  hideTitle?: boolean;
 }
 
-export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = false, height }) => {
+export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = false, height, hideTitle = false }) => {
   const [selectedCandidates, setSelectedCandidates] = useState<Set<string>>(new Set());
 
   const candidateRankingsSeries = useCandidateRankingSeries(selectedCandidates);
@@ -58,7 +59,7 @@ export const MjRankingChart: React.FC<MjRankingChartProps> = ({ isThumbnail = fa
 
   return (
     <Box sx={{ width: 1, height: 1, display: 'flex', flexDirection: 'column' }}>
-      {!isThumbnail &&
+      {!isThumbnail && !hideTitle &&
         <ChartTitle
           title="Classement des candidats à l'éléction présidentiel 2027"
           subtitle1={`source : IPSOS, commanditaire La Tribune Dimanche, dernier sondage: 

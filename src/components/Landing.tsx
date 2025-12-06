@@ -6,10 +6,7 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import HowToVoteIcon from '@mui/icons-material/HowToVote';
 import BarChartIcon from '@mui/icons-material/BarChart';
 
-const float = keyframes`
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-`;
+
 
 const fadeInUp = keyframes`
   from {
@@ -206,24 +203,24 @@ export const Landing = () => {
                 >
                     {[
                         {
-                            icon: <HowToVoteIcon sx={{ fontSize: 40 }} />,
-                            title: 'Jugement Majoritaire',
-                            description: 'Une méthode innovante où chaque électeur attribue une mention à chaque candidat',
-                            onClick: () => navigate({ to: '/majoritaire' }),
-                            delay: '0.2s',
-                        },
-                        {
                             icon: <BarChartIcon sx={{ fontSize: 40 }} />,
                             title: 'Vote Uninominal',
                             description: 'Le système traditionnel basé sur un seul tour de vote',
                             onClick: () => navigate({ to: '/uninominal' }),
-                            delay: '0.4s',
+                            delay: '0.2s',
                         },
                         {
                             icon: <TrendingUpIcon sx={{ fontSize: 40 }} />,
                             title: 'Vote par Approbation',
                             description: 'Approuvez autant de candidats que vous le souhaitez',
                             onClick: () => navigate({ to: '/approbation' }),
+                            delay: '0.4s',
+                        },
+                        {
+                            icon: <HowToVoteIcon sx={{ fontSize: 40 }} />,
+                            title: 'Jugement Majoritaire',
+                            description: 'Une méthode innovante où chaque électeur attribue une mention à chaque candidat',
+                            onClick: () => navigate({ to: '/majoritaire' }),
                             delay: '0.6s',
                         },
                     ].map((feature, index) => (
