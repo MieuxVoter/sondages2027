@@ -5,7 +5,7 @@ import {
   createHashHistory,
 } from '@tanstack/react-router'
 import { App } from './components/App'
-import { Building } from './components/Building'
+import { Uninominal } from './components/Uninominal'
 import { TestPlotly } from './components/chart/plotly/TestPlotly'
 import { WebTimeMeritChart } from './components/web/chart-page/WebTimeMeritChart'
 import { WebRankingChart } from './components/web/chart-page/WebRankingChart'
@@ -41,7 +41,7 @@ const approbationRoute = createRoute({
 const uninominalRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/uninominal',
-  component: Building
+  component: Uninominal
 })
 
 // Detail pages (accessed via direct links if needed)

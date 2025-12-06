@@ -3,6 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { enableMapSet } from 'immer';
 import { mjSliceReducer } from './jm-slice/jm-slice';
 import { approvalSliceReducer } from './approval-slice/approval-slice';
+import { smpSliceReducer } from './smp-slice/smp-slice';
 
 const initialState = {
     lang: "en",
@@ -10,12 +11,12 @@ const initialState = {
 };
 const globalSlice = createSlice({
     name: 'global',
-    initialState:initialState,
-    reducers:{
-        setLanguage(state, action: PayloadAction<string>){
+    initialState: initialState,
+    reducers: {
+        setLanguage(state, action: PayloadAction<string>) {
             state.lang = action.payload;
         },
-        setError(state, action){
+        setError(state, action) {
             state.error = action.payload;
         },
     }
@@ -31,7 +32,8 @@ export const store = configureStore({
     reducer: {
         global: globalSlice.reducer,
         majorityJudgment: mjSliceReducer,
-        approval: approvalSliceReducer
+        approval: approvalSliceReducer,
+        smp: smpSliceReducer,
     },
 });
 
