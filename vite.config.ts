@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react(), svgr()],
-  base: '/sondages2027/',
-})
+  base: mode === 'production' ? '/sondages2027/' : '/',
+}))
